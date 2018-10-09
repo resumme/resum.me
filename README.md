@@ -1,5 +1,5 @@
 # Resumme
-> Dynamic resumes build from your favourite course providers. This plataforms will create a cool resume for you. The cool feature of this platform is the integration with your favourite course providers. While you are working hard finishing your latest courses, we will make sure to update your resume automatically.
+> Build free resumes connecting with your favourite online schools. This plataforms will create a cool resume for you. The cool feature of this platform is the integration with your favourite course providers. While you are working hard finishing your latest courses, we will make sure to update your resume automatically.
 
 
 Focus on learning, we will make sure to create a cool resume to get you a great job!

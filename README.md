@@ -56,3 +56,9 @@ python manage.py runserver
 3. Commit your changes (`git commit -am 'Added some cool feature'`)
 4. Push to the branch (`git push origin feature/coolFeature`)
 5. Create a new Pull Request
+
+
+## Sponsors
+
+Without the help of this cool companies we could not provide this awesome service. Thanks for being awesome :heart:
+![](media/bluekiri-logo.svg)

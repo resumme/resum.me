@@ -1,0 +1,101 @@
+{% extends 'dashboard/base.html' %}
+{% load i18n %}
+{% block dashboard_content %}
+    <div class="columns">
+        <div class="column">
+            <!-- Main content -->
+            <div id="main-dashboard" class="section-wrapper">
+                <!-- Widgets -->
+                <div class="columns dashboard-columns">
+                    <div class="column is-4">
+                        <div class="flex-card light-bordered light-raised">
+                            <div class="card-body">
+                                <h2 class="no-margin title-bold">¿ Why is this important?</h2>
+                                <p class="pt-10">When you are looking for a new job, a key skill is the ability to learn
+                                    and transmit knowledge</p>
+                                <p class="pt-10">Show to your future boss what have you have done to be such an awesome
+                                    professional</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="column is-7">
+                        <!-- Widget -->
+                        <div class="flex-card light-bordered light-raised padding-10">
+                            <h3 class="card-heading">Timeline</h3>
+                            <div class="card-body">
+                                <ol class="simple-feed">
+                                    {% for item in timeline_items %}
+                                        <!-- Feed item -->
+                                        <li class="feed-item">
+                                            <i class="sl
+                                     {% if item.type == 'j' %}
+                                        sl-icon-briefcase
+                                    {% elif item.type == 'f' %}
+                                        sl-icon-graduation
+                                    {% elif item.type == 'e' %}
+                                        sl-icon-bubbles
+                                    {% elif item.type == 'c' %}
+                                        sl-icon-badge
+                                    {% endif %} is-icon-2x accent-text"></i>
+                                            <div class="feed-item-text">
+                                                <span class="date">{{ item.start_date }}{% if item.end_date %} -
+                                                    {{ item.end_date }} {% endif %}</span>
+                                                <p class="name">{{ item.title }}</p>
+                                                <span class="text">{{ item.description }}</span>
+                                                <!-- Modal trigger -->
+                                                <p><a style="color: white"
+                                                      class="button btn-align is-danger raised modal-trigger rounded"
+                                                      data-modal="basic-modal-{{ item.pk }}">{% trans 'Delete' %}</a><a
+                                                        href="{% url 'dashboard_timeline_update' item.pk %}"
+                                                        style="color: white"
+                                                        class="ml-5 button btn-align is-info raised rounded">Edit</a>
+                                                </p>
+                                                <!-- /Modal trigger -->
+                                                <p></p>
+
+                                                <!-- Modal Markup -->
+                                                <div id="basic-modal-{{ item.pk }}" class="modal modal-warning">
+                                                    <div class="modal-background"></div>
+                                                    <div class="modal-content">
+                                                        <div class="flex-card simple-shadow">
+                                                            <div class="card-body">
+                                                                <div class="content">
+                                                                    <h2 class="has-text-centered pb-20">Are you sure you
+                                                                        want to
+                                                                        delete this item?</h2>
+                                                                    <div class="has-text-centered">
+                                                                        <a style="color: white"
+                                                                           href="{% url 'dashboard_timeline_delete' item.pk %}"
+                                                                           class="button button-cta btn-align is-danger raised modal-trigger"
+                                                                           data-modal="basic-modal">Delete</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <button class="modal-close is-large is-hidden"
+                                                            aria-label="close"></button>
+                                                </div>
+                                                <!-- /Modal Markup -->
+
+                                            </div>
+                                        </li>
+                                    {% endfor %}
+                                </ol>
+                                <p><a href="{% url 'dashboard_timeline_add' %}"
+                                      class="button button-cta primary-btn rounded raised">Add new item</a></p>
+
+                            </div>
+                        </div>
+                        <!-- /Widget -->
+                    </div>
+                </div>
+                <!-- /Widgets -->
+            </div>
+            <!-- /Main content -->
+        </div>
+        <!-- /Main view -->
+    </div>
+
+{% endblock %}

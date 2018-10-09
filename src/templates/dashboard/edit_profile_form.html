@@ -1,0 +1,94 @@
+{% extends 'dashboard/base.html' %}
+{% block dashboard_content %}
+
+    <div class="columns">
+        <div class="column">
+            <!-- Main content -->
+            <div id="main-dashboard" class="section-wrapper">
+                <!-- Widgets -->
+                <div class="columns dashboard-columns">
+                    <div class="column is-10">
+                        <!-- Widget -->
+                        <div class="flex-card light-bordered light-raised padding-10">
+                            <h3 class="card-heading">Whats your {{ main_provider.provider.name|title }} Nickname?</h3>
+                            <div class="card-body">
+                                <form action="" method="POST">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        {{ form }}
+                                    </div>
+                                    <div class="mt-20 has-text-right">
+                                        <button type="submit"
+                                                class="button btn-align info-btn  raised btn-outlined rounded">Save
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="columns dashboard-columns">
+                            <div class="column is-12">
+                                <!-- Widget -->
+                                <div class="columns dashboard-columns">
+                                    <div class="column is-11">
+                                        <div id="tab-a1" class="navtab-content is-active">
+                                            <div class="projects-list-wrapper">
+                                                <div class="list-header">
+                                                    <div class="list-title pt-30">
+                                                        <h1>Providers</h1>
+                                                    </div>
+                                                </div>
+                                                <div class="list-body">
+                                                    <div class="columns is-multiline">
+                                                        {% for provider in providers %}
+                                                            <!-- Provider card -->
+                                                            <div class="column is-4">
+                                                            <a href="{% url 'dashboard_edit_provider' provider.pk %}">
+                                                                <div class="flex-card light-bordered light-shadow project-card card-overflow">
+                                                                    <div class="header">
+                                                                        <div class="face" style="width: 25px">
+                                                                            {% if provider.provider.icon.name %}
+                                                                                <img src="{{ provider.provider.icon.url }}">
+                                                                            {% endif %}
+                                                                        </div>
+                                                                        <h4 class="no-margin-bottom">{{ provider.provider.name }}</h4>
+                                                                        <!-- Task card dropdown -->
+                                                                        <div class="dropdown is-right dropdown-trigger">
+                                                                            <div class="" id="" role="menu">
+                                                                                <a href="{% url 'dashboard_edit_provider' provider.pk %}"><span
+                                                                                        class="material-icons">edit</span></a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    {#                                                            <div class="progress-block">#}
+                                                                    {#                                                                <progress class="progress is-xs is-orange" value="30"#}
+                                                                    {#                                                                          max="100">30%#}
+                                                                    {#                                                                </progress>#}
+                                                                    {#                                                                <p>Rate</p>#}
+                                                                    {#                                                                <div class="task-count">#}
+                                                                    {#                                                                    <span class="sl sl-icon-check"></span>#}
+                                                                    {#                                                                    <span>10/10</span>#}
+                                                                    {#                                                                </div>#}
+                                                                    {#                                                            </div>#}
+                                                                </div>
+                                                            </a>
+                                                            </div>
+                                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Widget -->
+                        </div>
+                    </div>
+                    <!-- /Widgets -->
+                </div>
+                <!-- /Main content -->
+            </div>
+            <!-- /Main view -->
+        </div>
+
+{% endblock %}

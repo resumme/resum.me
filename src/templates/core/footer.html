@@ -1,0 +1,72 @@
+{% load static web_tags i18n %}
+<!-- Footer light -->
+<footer class="footer footer-light">
+    <div class="container">
+        <div class="columns footer-columns is-flex-mobile">
+            <div class="column is-half-mobile">
+                <div class="footer-column">
+                    <div class="footer-header">
+                        <h3>Resum.me</h3>
+                    </div>
+                    <ul class="link-list">
+                        <li><a href="{% url 'landing' %}">Home</a></li>
+                        <li><a href="{% url 'dashboard_home' %}">Dashboard</a></li>
+                        <li> -</li>
+                        <li><a href="{% url 'login' %}">Log in</a></li>
+                        <li><a href="{% url 'signup' %}">Sign up</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="column is-half-mobile">
+                <div class="footer-column">
+                    <div class="footer-header">
+                        <h3>Learn</h3>
+                    </div>
+                    <ul class="link-list">
+                        <li><a href="https://teamtreehouse.com/">Treehouse</a></li>
+                        <li><a href="https://www.sololearn.com/">SoloLearn</a></li>
+                        <li><a href="https://www.codecademy.com/">Code Academy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="column is-half-mobile">
+                <div class="footer-column">
+                    <div class="footer-header">
+                        <h3>Legal</h3>
+                    </div>
+                    <ul class="link-list">
+                        <li><a href="{% url 'legal_terms' %}">Terms and conditions</a></li>
+                        <li><a href="{% url 'legal_privacy_policy' %}">Privacy policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="column is-half-mobile">
+                <div class="footer-column">
+                    <div class="footer-header">
+                        <nav class="level is-mobile">
+                            <div class="level-left level-social">
+                                <a href="https://www.facebook.com/resummeapp" class="level-item">
+                                    <span class="icon"><i class="fa fa-facebook"></i></span>
+                                </a>
+                                <a href="https://www.instagram.com/resummeapp/" class="level-item">
+                                    <span class="icon"><i class="fa fa-instagram"></i></span>
+                                </a>
+                                <a href="https://github.com/adriancast/resum.me" class="level-item">
+                                    <span class="icon"><i class="fa fa-github"></i></span>
+                                </a>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="copyright">
+                        <span class="moto dark-text">Coded with <i class="fa fa-heart color-red"></i> in Majorca</span>
+                    </div>
+                    <div class="footer-logo">
+                        <p>Proudly hosted by</p>
+                        <a href="https://cloud.bluekiri.com/"><img src="{% static 'images/logos/logo_bluekiri.svg' %}" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- /Footer light -->

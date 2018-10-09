@@ -1,0 +1,306 @@
+{% load static web_tags i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required Meta Tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Resum.me - free resume builder</title>
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
+
+    <!--Core CSS -->
+    <link rel="stylesheet" href="{% static 'css/bulma.css' %}">
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+    <link rel="stylesheet" href="{% static 'css/core_deep-blue.css' %}">
+
+    <!-- Main JS -->
+    <script src="{% static 'js/app.js' %}"></script>
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111339121-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-111339121-1');
+    </script>
+    {% include 'cookies-policies.html' %}
+</head>
+
+<body>
+<!-- Hero and nav -->
+<div class="hero hero-wavy is-relative is-theme-primary huge-pb">
+    <canvas id="canvas"></canvas>
+
+    {% include 'core/navbar.html' with is_profile=False %}
+    <!-- Hero image -->
+    <div id="main-hero" class="hero-body">
+        <div class="container has-text-centered">
+            <div class="columns is-vcentered">
+                <!-- Caption -->
+                <div class="column is-5 hero-caption">
+                    <h1 class="title big-landing-title text-bold is-2">
+                        Resumme
+                    </h1>
+                    <h2 class="subtitle is-5 light-text pt-10 pb-10">
+                        Build free resumes connecting with your favourite online schools
+                    </h2>
+                    <p class="pt-10 pb-10">
+                        <a href="#services" class="button button-cta light-btn btn-outlined is-bold rounded z-index-2">
+                            Get Started
+                        </a>
+                    </p>
+                </div>
+                <!-- Hero image -->
+                <div class="column is-9">
+                    <figure class="image">
+                        <img src="{% static 'images/illustrations/mockups/devices-app.png' %}" alt="">
+                    </figure>
+                </div>
+                <!-- /Hero image -->
+            </div>
+        </div>
+    </div>
+    <!-- /Hero image -->
+</div>
+<!-- /Hero and nav -->
+
+
+<!-- Services section -->
+<section id="services" class="section is-medium" style="padding-bottom: 0px">
+    <div class="container">
+        <!-- Title -->
+        <div class="section-title-wrapper has-text-centered">
+            <h2 class="section-title-landing">
+                Don't waste more time
+            </h2>
+            <h4>Focus on training, we care about your resume</h4>
+        </div>
+        <!-- /Title -->
+
+        <div class="content-wrapper">
+            <div class="columns is-vcentered is-multiline has-text-centered">
+                <!-- Icon block -->
+                <div class="column is-3">
+                    <div class="chat-icon-box">
+                        <div>
+                            <i class="im im-icon-Arrow-Refresh"></i>
+                        </div>
+                        <div class="box-title">Always updated</div>
+                        <p class="box-content is-tablet-padded">
+                            We will make sure to update your resume with your latest courses.
+                        </p>
+                    </div>
+                </div>
+                <!-- Icon block -->
+                <div class="column is-3">
+                    <div class="chat-icon-box">
+                        <div>
+                            <i class="im im-icon-Align-Right"></i>
+                        </div>
+                        <div class="box-title">Easy to use</div>
+                        <p class="box-content is-tablet-padded">
+                            With Resumme, you can set a resume in just a few minutes. It's easy to use and very useful.
+                        </p>
+                    </div>
+                </div>
+                <!-- Icon block -->
+                <div class="column is-3">
+                    <div class="chat-icon-box">
+                        <div>
+                            <i class="im im-icon-Power-Cable"></i>
+                        </div>
+                        <div class="box-title">Integrations</div>
+                        <p class="box-content is-tablet-padded">
+                            In order to update your resume, we integrate with your favourite online schools.
+                        </p>
+                    </div>
+                </div>
+                <!-- Icon block -->
+                <div class="column is-3">
+                    <div class="chat-icon-box">
+                        <div>
+                            <i class="im im-icon-Settings-Window"></i>
+                        </div>
+                        <div class="box-title">Dashboard</div>
+                        <p class="box-content is-tablet-padded">
+                            Our dashboard will help you with the task of managing your resume.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="has-text-centered is-title-reveal pt-40 pb-40">
+                <a href="#steps" class="button button-cta primary-btn rounded raised">Learn more</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /Services section -->
+
+<!-- Feature -->
+<section id="steps" class="section is-medium">
+    <div class="container">
+        <div class="columns is-vcentered">
+            <div class="column is-6 has-text-centered">
+                <!-- Featured illustration -->
+                <img class="featured-svg levitate" src="{% static 'images/illustrations/drawings/communicate.svg' %}"
+                     alt="">
+                <!-- /Featured illustration -->
+            </div>
+            <!-- Content -->
+            <div class="column is-4 is-offset-1">
+                <div class="icon-subtitle"><i class="im im-icon-Profile"></i></div>
+                <h2 class="title quick-feature is-handwritten">
+                    Create a Resume
+                    <span class="bg-number text-bold">1</span>
+                </h2>
+
+                <div class="title-divider is-small"></div>
+                <span class="section-feature-description">Let the journey begin! Register and fill the required information. You will be ready to rock in a few minutes.</span>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /Feature -->
+
+<!-- Feature -->
+<section class="section section-feature-grey is-medium is-relative is-skewed-sm">
+
+    <!-- Floating chat bubbles -->
+    <div class="floating-bubbles">
+        <div class="bubble">
+            <img class="bubble-1st levitate" src="{% static 'images/illustrations/drawings/bub-purple.svg' %}" alt="">
+        </div>
+        <div class="bubble">
+            <img class="bubble-2nd levitate" src="{% static 'images/illustrations/drawings/bub-blue.svg' %}" alt="">
+        </div>
+        <div class="bubble">
+            <img class="bubble-3rd levitate" src="{% static 'images/illustrations/drawings/bub-blue.svg' %}" alt="">
+        </div>
+        <div class="bubble">
+            <img class="bubble-4th levitate" src="{% static 'images/illustrations/drawings/bub-blue.svg' %}" alt="">
+        </div>
+    </div>
+    <!-- /Floating chat bubbles -->
+
+    <div class="container is-reverse-skewed-sm">
+
+        <!-- Feature -->
+        <div class="columns is-vcentered">
+            <!-- Content -->
+            <div class="column is-4 is-offset-2">
+                <div class="icon-subtitle"><i class="im im-icon-Plug-In"></i></div>
+                <h2 class="title quick-feature is-handwritten">
+                    Sync your online schools
+                    <span class="bg-number text-bold">2</span>
+                </h2>
+                <div class="title-divider is-small"></div>
+                <p class="section-feature-description">
+                    Configure your online schools in the dashboard. You will only need to provide us your nickname.
+                </p>
+                <p class="section-feature-description">
+                    At present, we only support <a href="https://teamtreehouse.com/">Treehouse</a>, but we are working
+                    hard to incorporate new integrations.
+                </p>
+            </div>
+
+            <div class="column is-6 has-text-centered">
+                <!-- Featured illustration -->
+                <img class="featured-svg levitate" src="{% static 'images/illustrations/drawings/learn.svg' %}" alt="">
+                <!-- /Featured illustration -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /Feature -->
+
+<!-- Feature -->
+<section class="section is-medium">
+    <div class="container">
+
+        <!-- Feature -->
+        <div class="columns is-vcentered">
+            <div class="column is-6 has-text-centered">
+                <!-- Featured illustration -->
+                <img class="featured-svg levitate" src="{% static 'images/illustrations/drawings/support-team.svg' %}"
+                     alt="">
+                <!-- /Featured illustration -->
+            </div>
+            <!-- Content -->
+            <div class="column is-4 is-offset-1">
+                <div class="icon-subtitle"><i class="im im im-icon-Glasses"></i></div>
+                <h2 class="title quick-feature is-handwritten">
+                    Learn
+                    <span class="bg-number text-bold">4</span>
+                </h2>
+                <div class="title-divider is-small"></div>
+                <p class="section-feature-description">Complete courses.</p>
+                <p class="section-feature-description">Each time you complete a course, it will appear automatically in
+                    your resume.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /Feature -->
+
+<!-- Feature -->
+<section id="features" class="section section-feature-grey is-relative is-medium is-skewed-sm">
+
+    <!-- Floating chat bubbles -->
+    <div class="floating-bubbles">
+        <div class="bubble">
+            <img class="bubble-5th levitate" src="{% static 'images/illustrations/drawings/bub-blue.svg' %}" alt="">
+            <img class="bubble-6th levitate" src="{% static 'images/illustrations/drawings/bub-purple.svg' %}" alt="">
+            <img class="bubble-7th levitate" src="{% static 'images/illustrations/drawings/bub-purple.svg' %}" alt="">
+            <img class="bubble-8th levitate" src="{% static 'images/illustrations/drawings/bub-purple.svg' %}" alt="">
+            <img class="bubble-9th levitate" src="{% static 'images/illustrations/drawings/bub-blue.svg' %}" alt="">
+        </div>
+    </div>
+    <!-- /Floating chat bubbles -->
+
+    <div class="container is-reverse-skewed-sm">
+
+        <div class="columns is-vcentered">
+            <!-- Content -->
+            <div class="column is-4 is-offset-2">
+                <div class="icon-subtitle"><i class="im im-icon-Speach-Bubble2"></i></div>
+                <h2 class="title quick-feature is-handwritten">
+                    Find a job
+                    <span class="bg-number text-bold">5</span>
+                </h2>
+                <div class="title-divider is-small"></div>
+                <p class="section-feature-description">Recruiters are always looking for active developers.</p>
+                <p class="section-feature-description">If you are up to date on the latest technologies, you will find
+                    work easily.</p>
+            </div>
+
+            <div class="column is-6 has-text-centered">
+                <!-- Featured illustration -->
+                <img class="featured-svg levitate" src="{% static 'images/illustrations/drawings/mobile-chat.svg' %}"
+                     alt="">
+                <!-- /Featured illustration -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /Feature -->
+
+{% include 'core/footer.html' %}
+
+<!-- Back To Top Button -->
+<div id="backtotop"><a href="#"></a></div>
+
+<!-- Bulkit js -->
+<script src="{% static 'js/landingv2.js' %}"></script>
+<script src="{% static 'js/auth.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

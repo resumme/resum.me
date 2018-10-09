@@ -1,0 +1,76 @@
+{% load static web_tags i18n %}
+<nav class="navbar navbar-wrapper navbar-fade navbar-light is-transparent">
+    <div class="container">
+        <!-- Brand -->
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <img class="light-logo" src="{% static 'images/logos/logo-w.png' %}" alt="">
+                <img class="dark-logo" src="{% static 'images/logos/logo-p.png' %}" alt="">
+            </a>
+
+            <!-- Responsive toggle -->
+            <div class="custom-burger" data-target="">
+                <a id="" class="responsive-btn" href="javascript:void(0);">
+                            <span class="menu-toggle">
+                                <span class="icon-box-toggle">
+                                    <span class="rotate">
+                                        <i class="icon-line-top"></i>
+                                        <i class="icon-line-center"></i>
+                                        <i class="icon-line-bottom"></i>
+                                    </span>
+                                </span>
+                            </span>
+                </a>
+            </div>
+            <!-- /Responsive toggle -->
+        </div>
+        <!-- Navbar menu -->
+        <div class="navbar-menu">
+            {% if is_profile %}
+                <!-- Navbar Start -->
+                <div class="navbar-start">
+                    <!-- Navbar item -->
+                    <a class="navbar-item is-slide" href="#about-me">
+                        About me
+                    </a>
+                    {% if timeline %}
+                        <!-- Navbar item -->
+                        <a class="navbar-item is-slide" href="#timeline">
+                            Timeline
+                        </a>
+                    {% endif %}
+                    {% if courses.all %}
+                    <!-- Navbar item -->
+                    <a class="navbar-item is-slide" href="#courses">
+                        Courses
+                    </a>
+                    {% endif %}
+                </div>
+            {% endif %}
+
+            <!-- Navbar end -->
+            <div class="navbar-end">
+                {% if request.user.is_authenticated %}
+                    <div class="navbar-item">
+                        <a href="{% url 'dashboard_home' %}"
+                           class="button button-signup btn-outlined is-bold btn-align light-btn rounded raised">
+                            Dashboard
+                        </a>
+                    </div>
+
+                {% else %}
+                    <a class="navbar-item is-slide" href="{% url 'login' %}">
+                        Login
+                    </a>
+                    <!-- Signup button -->
+                    <div class="navbar-item">
+                        <a id="#signup-btn" href="{% url 'signup' %}"
+                           class="button button-signup btn-outlined is-bold btn-align light-btn rounded raised">
+                            Sign up
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</nav>

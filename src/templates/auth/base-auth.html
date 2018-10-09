@@ -1,0 +1,49 @@
+{% load static web_tags i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required Meta Tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
+
+    <!--Core CSS -->
+    <link rel="stylesheet" href="{% static 'css/bulma.css' %}">
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+    <link rel="stylesheet" href="{% static 'css/core_deep-blue.css' %}">
+
+    <!-- Main JS -->
+    <script src="{% static 'js/app.js' %}"></script>
+
+</head>
+<body>
+{% block content %}
+    <!-- Hero and nav -->
+    <div class="hero is-relative is-light-grey huge-pb">
+
+        {% include 'core/navbar.html' with is_profile=False %}
+        <!-- Hero -->
+        <div id="main-hero" class="hero-body">
+            <div class="container has-text-centered">
+                <div class="column is-6 is-offset-3 z-index-2">
+                    {% block form %}
+                    {% endblock %}
+                    {% block messages %}
+                    {% endblock %}
+                    <!-- /Login form -->
+                </div>
+            </div>
+        </div>
+        <!-- /Hero image -->
+    </div>
+    <!-- /Hero and nav -->
+    {% include 'core/footer.html' %}
+{% endblock %}
+<!-- Bulkit js -->
+<script src="{% static 'js/landingv2.js' %}"></script>
+<script src="{% static 'js/auth.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

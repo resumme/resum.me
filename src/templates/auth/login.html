@@ -1,0 +1,51 @@
+{% extends 'auth/base-auth.html' %}
+{% load i18n %}
+
+{% block title %}Resum - Log in{% endblock %}
+{% block form %}
+    <div id="login-card" class="animated preFadeInLeft fadeInLeft">
+         {% if form.errors %}
+            <p class="tag is-danger is-medium">
+                {% trans "Your username and password didn't match. Please try again." %}
+            </p>
+        {% endif %}
+        <div class="flex-card clean-login-card">
+            <h2 class="text-bold dark-text">Log in</h2>
+            <form method="post" class="pt-10 pb-10" id="form">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ next }}"/>
+                <div class="control-material is-primary">
+                    <input class="material-input" type="text" id="id_username" type="text" name="username" required>
+                    <span class="material-highlight"></span>
+                    <span class="bar"></span>
+                    <label>Email</label>
+                </div>
+                <div class="control-material is-primary">
+                    <input class="material-input" id="id_password" type="password" name="password" required>
+                    <span class="material-highlight"></span>
+                    <span class="bar"></span>
+                    <label>Password</label>
+                </div>
+                <div class="field pt-20">
+                    <div class="control">
+                        <label class="checkbox-wrap is-medium">
+                            <input id="check2" type="checkbox" class="d-checkbox">
+                            <span></span>
+                            Remember me
+                        </label>
+                    </div>
+                </div>
+                <div class="pt-20 pb-20">
+                    <button class="button button-cta btn-align primary-btn is-fullwidth rounded raised no-lh"
+                            onclick="document.getElementById('form').submit();">Login
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <p class="has-text-centered pt-20 pb-20">
+            <a id="show-recover" class="no-account is-secondary" href="{% url 'password_reset' %}">Lost your
+                password?</a>
+        </p>
+    </div>
+{% endblock %}

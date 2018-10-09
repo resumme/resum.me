@@ -1,0 +1,18 @@
+django == 2.0
+Pygments==2.2.0
+raven==6.9.0
+requests==2.18.4
+gunicorn==19.6.0
+psycopg2==2.7.0
+Pillow==5.1.0
+django-taggit==0.23.0
+django-extensions==2.1.0
+raven==6.9.0
+lxml==4.2.3
+html5lib==1.0.1
+beautifulsoup4==4.6.3
+gevent==1.2.1
+whitenoise==4.0
+django-storages==1.7.1
+google==2.0.1
+google-cloud-storage==1.11.0

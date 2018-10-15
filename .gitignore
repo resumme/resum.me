@@ -1,0 +1,21 @@
+.idea/
+db.*
+*.pyc
+
+# Compiled assets
+src/media/
+src/static/
+
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# App configuration, should be private
+src/app.yaml
+src/manage.sh
+src/bluekiri-kiri-pro-resumme-storage.json
+
+# All hidden files excep gitignore
+.*
+!/.gitignore

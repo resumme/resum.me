@@ -61,4 +61,4 @@ python manage.py runserver
 ## Sponsors
 
 Without the help of this cool companies we could not provide this awesome service. Thanks for being awesome :heart:
-![](media/bluekiri-logo.svg)
+[![Bluekiri](media/bluekiri-logo.svg)](https://bluekiri.com)

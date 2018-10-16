@@ -1,3 +1,5 @@
+![resum.me logo](/src/media/logo_final_icon.jpg)
+
 # Resumme
 > Build free resumes connecting with your favourite online schools. This plataforms will create a cool resume for you. The cool feature of this platform is the integration with your favourite course providers. While you are working hard finishing your latest courses, we will make sure to update your resume automatically.
 

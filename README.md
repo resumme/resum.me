@@ -1,7 +1,7 @@
-
 <img align="right" src="src/media/logo_final_icon.jpg" alt="resum.me logo" width="200px"/>
 
-# Resumme
+<img src="https://storage.googleapis.com/bluekiri-kiri-pro-resumme-static/static/images/logos/logo-p.png" alt="Resumme Logo"  width="300" />
+
 > Build free resumes connecting with your favourite online schools. This plataforms will create a cool resume for you. The cool feature of this platform is the integration with your favourite course providers. While you are working hard finishing your latest courses, we will make sure to update your resume automatically.
 
 
@@ -64,4 +64,4 @@ python manage.py runserver
 ## Sponsors
 
 Without the help of this cool companies we could not provide this awesome service. Thanks for being awesome :heart:
-![](media/bluekiri-logo.svg)
+[![Bluekiri](media/bluekiri-logo.svg)](https://bluekiri.com)

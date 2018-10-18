@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/resumme/resum.me.svg?branch=master)](https://travis-ci.com/resumme/resum.me)
+
 <img align="right" src="src/media/logo_final_icon.jpg" alt="resum.me logo" width="200px"/>
 
 <img src="https://storage.googleapis.com/bluekiri-kiri-pro-resumme-static/static/images/logos/logo-p.png" alt="Resumme Logo"  width="300" />

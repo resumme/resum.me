@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.com/resumme/resum.me.svg?branch=master)](https://travis-ci.com/resumme/resum.me)
+[![Coverage Status](https://coveralls.io/repos/github/resumme/resum.me/badge.svg?branch=master)](https://coveralls.io/github/resumme/resum.me?branch=master)
 
 <img src="https://storage.googleapis.com/bluekiri-kiri-pro-resumme-static/static/images/logos/logo-p.png" alt="Resumme Logo"  width="300" />
 

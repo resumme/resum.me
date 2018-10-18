@@ -1,7 +1,5 @@
 [![Build Status](https://travis-ci.com/resumme/resum.me.svg?branch=master)](https://travis-ci.com/resumme/resum.me)
 
-<img align="right" src="src/media/logo_final_icon.jpg" alt="resum.me logo" width="200px"/>
-
 <img src="https://storage.googleapis.com/bluekiri-kiri-pro-resumme-static/static/images/logos/logo-p.png" alt="Resumme Logo"  width="300" />
 
 > Build free resumes connecting with your favourite online schools. This plataforms will create a cool resume for you. The cool feature of this platform is the integration with your favourite course providers. While you are working hard finishing your latest courses, we will make sure to update your resume automatically.
@@ -55,6 +53,9 @@ python manage.py runserver
 ```
 
 ## Contributing
+
+
+<img align="right" src="src/media/logo_final_icon.jpg" alt="resum.me logo" width="180px"/>
 
 1. Fork it (<https://github.com/resumme/resum.me>)
 2. Create your feature branch (`git checkout -b feature/coolFeature`)

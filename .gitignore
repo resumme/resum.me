@@ -15,7 +15,3 @@ __pycache__/
 src/app.yaml
 src/manage.sh
 src/bluekiri-kiri-pro-resumme-storage.json
-
-# All hidden files excep gitignore
-.*
-!/.gitignore

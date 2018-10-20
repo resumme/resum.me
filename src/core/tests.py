@@ -1,3 +1,2 @@
-from django.test import TestCase
-
-# Create your tests here.
+def test_test_are_working():
+    assert True

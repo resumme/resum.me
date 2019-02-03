@@ -1,104 +1,72 @@
-{% extends 'auth/base-auth.html' %}
+{% extends 'auth/base-auth-reloaded.html' %}
 
 {% block title %}Resum - Log in{% endblock %}
-{% block content %}
-<!-- Hero and nav -->
-<div class="hero hero-wavy is-relative is-light-grey huge-pb">
-
-    {% include 'core/navbar.html' with is_profile=False %}
-    <!-- Hero -->
-    <div id="main-hero" class="hero-body">
-        <div class="container has-text-centered">
-            <div class="columns is-vcentered pt-50 pb-50">
-
-                <!-- Signup form -->
-                <div class="column is-5 is-offset-2 z-index-2">
-                    <div id="signup-card" class="animated preFadeInLeft fadeInLeft">
-                        <div class="flex-card clean-signup-card">
-                            <h2 class="has-text-centered text-bold">Sign up</h2>
+{% block auth_form %}
+  <div class="card-body px-lg-5 py-lg-5">
+    <div class="text-center text-muted mb-4">
+      <small>Sign up with credentials</small>
+    </div>
+    <form role="form" id="auth_form" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="next" value="{{ next }}" />
+      <div class="alert alert-default" role="alert" id="username_helper">
+        Your public profile will be available in </br> www.resum.me/<span>your_username</span></br></br> <strong>Your username can not have spaces or any special character</strong>
+      </div>
+      <div class="form-group">
+        <div class="input-group input-group-alternative mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="ni ni-world"></i></span>
+          </div>
+          <input class="form-control" placeholder="Custom URL" id="id_username" type="text" name="username"  required>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group input-group-alternative mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+          </div>
+          <input class="form-control" placeholder="Email" id="id_email_address" type="email" name="email"  required>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group input-group-alternative">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+          </div>
+          <input class="form-control" placeholder="Password" id="id_password1" type="password" name="password1"  required>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group input-group-alternative">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+          </div>
+          <input class="form-control" placeholder="Repeat password" id="id_password2" type="password" name="password2"  required>
+        </div>
+      </div>
                             {% for field in form %}
                                 {% if field.errors %}
-                                    <small class="tag is-danger is-medium"> {{ field.label }} - {{ field.errors }}</small>
+            <div class="alert alert-danger mt-3" role="alert">
+                <small><strong>{{ field.label }}:</strong> {{ field.errors }}</small>
+
+</div>
                                 {% endif %}
                             {% endfor %}
-                            <form method="post" class="auth-form" id="form">
-                                {% csrf_token %}
-                                <input type="hidden" name="next" value="{{ next }}" />
-                                <div class="control-material is-secondary">
-                                    <input class="material-input" id="id_username" type="text" name="username"  required>
-                                    <span class="material-highlight"></span>
-                                    <span class="bar"></span>
-                                    <label>Nickname *</label>
-                                </div>
-                                <div class="control-material is-secondary">
-                                    <input class="material-input" id="id_email_address" type="email" name="email"  required>
-                                    <span class="material-highlight"></span>
-                                    <span class="bar"></span>
-                                    <label>Email</label>
-                                </div>
-                                <div class="control-material is-secondary">
-                                    <input class="material-input" id="id_password1" type="password" name="password1"  required>
-                                    <span class="material-highlight"></span>
-                                    <span class="bar"></span>
-                                    <label>Password *</label>
-                                </div>
-                                <div class="control-material is-secondary">
-                                    <input class="material-input" id="id_password2" type="password" name="password2"  required>
-                                    <span class="material-highlight"></span>
-                                    <span class="bar"></span>
-                                    <label>Confirm password *</label>
-                                </div>
-                                <label class="checkbox">
-                                  <input type="checkbox" name="legal_terms" required>
-                                    I accept the <a href={% url 'legal_terms' %} target="_blank">conditions of use and contracting</a> and the <a href={% url 'legal_privacy_policy' %} target="_blank">politics of privacy policy</a>
-                                </label>
-                                <div class="pt-20 pb-20">
-                                    <button class="button button-cta btn-align secondary-btn is-fullwidth rounded raised no-lh" onclick="document.getElementById('form').submit();">Get started now</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <!-- Signup form -->
-
-                <!-- Signup features -->
-                <div class="column is-4 z-index-2">
-                    <div class="flex-card signup-context secondary-card light-raised padding-40 is-hidden-mobile">
-                        <h2 class="title is-4 is-landing-light has-text-centered light-text">What you get</h2>
-                        <!-- Icon block -->
-                        <div class="argument">
-                            <div class="icon">
-                                <i class="im im-icon-Timer-2"></i>
-                            </div>
-                            <div class="argument-text light-text">
-                                An awesome resume in just a few minutes
-                            </div>
-                        </div>
-                        <!-- Icon block -->
-                        <div class="argument">
-                            <div class="icon">
-                                <i class="im im-icon-Laptop-Phone"></i>
-                            </div>
-                            <div class="argument-text light-text">
-                                Free personal website under resum.me domain
-                            </div>
-                        </div>
-                        <!-- Icon block -->
-                        <div class="argument pb-40">
-                            <div class="icon">
-                                <i class="im im-icon-Arrow-Around"></i>
-                            </div>
-                            <div class="argument-text light-text">
-                                Resume dynamically updated with your latest courses made on your favourite online schools                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /Signup features -->
-            </div>
+      <div class="row my-4">
+        <div class="col-12">
+          <div class="custom-control custom-control-alternative custom-checkbox">
+            <input class="custom-control-input" id="legalCheckRegister" type="checkbox" name="legal_terms" required>
+            <label class="custom-control-label" for="legalCheckRegister">
+                <a>I accept the <a href={% url 'legal_terms' %} target="_blank">conditions of use and contracting</a> and the <a href={% url 'legal_privacy_policy' %} target="_blank">politics of privacy policy</a>
+              </span>
+            </label>
+          </div>
         </div>
-    </div>
-    <!-- /Hero image -->
-</div>
-<!-- /Hero and nav -->
-{% include 'core/footer.html' %}
+      </div>
+      <div class="text-center">
+        <button type="button" class="btn btn-primary mt-4" onclick="document.getElementById('auth_form').submit();">Create account</button>
+      </div>
+    </form>
+  </div>
+
 {% endblock %}

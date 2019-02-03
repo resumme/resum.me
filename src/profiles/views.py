@@ -25,7 +25,7 @@ def LoadProfileView(request, username):
         data['courses'] = courses_from_username(username=username)
     except User.DoesNotExist:
         raise Http404("User does not exist")
-    return render(request, 'profiles/profile.html', data)
+    return render(request, 'profiles/profile-reloaded.html', data)
 
 
 class BioEditView(LoginRequiredMixin, UpdateView):

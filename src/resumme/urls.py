@@ -15,17 +15,19 @@ Including another URLconf
 """
 from django.conf.urls import include
 from django.conf.urls import url
+from django.urls import path
 from django.contrib import admin
-from django.conf import settings
-from django.conf.urls.static import static
+from django.views.generic import TemplateView
+
 
 from landing.views import landing_page
+from dashboard.views import DashboardView
 from core.views import terms_and_condition, privacy
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
+    url(r'^r/dashboard/', DashboardView.as_view(), name="dashboard"),
     url(r'^r/admin/', admin.site.urls),
-    url(r'^r/dashboard/', include('dashboard.urls')),
     url(r'^r/auth/', include('authentication.urls')),
 
     # legal

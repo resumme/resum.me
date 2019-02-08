@@ -1,124 +1,26 @@
-{% extends 'dashboard/base.html' %}
-{% load static web_tags %}
-{% block dashboard_content %}
+{% load render_bundle from webpack_loader %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title>Django Vue Integration</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons">
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but frontend doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
 
-<div class="columns">
-    <div class="column">
-        <!-- Main content -->
-        <div id="main-dashboard" class="section-wrapper">
-            <!-- Stat tiles -->
-            <div class="columns dashboard-columns">
-                <div class="column is-4">
-                    {% comment %}
-                    {% if not provider_profile_nicknames.treehouse %}
-                    <div class="flex-card light-bordered secondary-card light-raised">
-                        <div class="card-body">
-                            <div class="content">
-                                <h2 class="no-margin title-bold">Hey chum!</h2>
-                                <p class="pt-10">I notice that you have not set your Treehouse profile nickname.</p>
-                                <p class="pt-10">If you want to get all your courses in your resume, you
-                                    need to make sure that your profile is public. Then put your nick in
-                                    the following page.</p>
 
-                                {% for provider in providers %}
-                                <div class="has-text-right">
-                                    <a href="{% url 'dashboard_provider' provider.pk %}"
-                                       class="button button-cta rounded raised">Edit Treehouse profile</a>
-                                </div>
-                                {% endfor %}
+	<div id="app">
+	    <app></app>
+	</div>
 
-                            </div>
-
-                        </div>
-                    </div>
-                    {% endif %}
-                    {% endcomment %}
-                    <div class="stats-card flex-card light-bordered light-raised">
-                        <div class="img-header">
-                            <div class="img-block has-text-centered">
-                                <div><img src="
-                                                    {% if profile.avatar and profile.avatar.url%}
-                                                        {{ profile.avatar.url }}
-                                                    {% else %}
-                                                        {% static 'images/avatar_placeholder.png' %}
-                                                    {% endif %}
-                                                    " alt=""></div>
-                                <div class="name">{{ profile.full_name }}</div>
-                                <div class="name-details">{{ profile.description }}</div>
-                                <div class="has-text-centered pt-10">
-                                    <a href="/{{ username }}"
-                                       class="button btn-align accent-btn rounded raised">View your
-                                        resume</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="inline-stats has-text-centered">
-                                <div class="stats-item">
-                                    <div class="stat-name">
-                                        Completed courses
-                                    </div>
-                                    <div class="stat-data">
-                                        {{ stats.courses_completed }}
-                                    </div>
-                                </div>
-                                <div class="stats-item">
-                                    <div class="stat-name">
-                                        Courses in progress
-                                    </div>
-                                    <div class="stat-data">
-                                        {{ stats.courses_in_progress }}
-                                    </div>
-                                </div>
-                                <div class="stats-item">
-                                    <div class="stat-name">
-                                        Total courses
-                                    </div>
-                                    <div class="stat-data">
-                                        {{ stats.total_courses }}
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="column is-8">
-                    <!-- Widget -->
-                    <div class="flex-card light-bordered light-raised padding-10">
-                        <h3 class="card-heading">Profile</h3>
-                        <div class="card-body">
-                            <form enctype="multipart/form-data" method="POST">
-                                {% csrf_token %}
-                                <div class="form-group">
-                                    {% for field in form %}
-                                    <div class="field">
-                                        <label class="form-label">{{ field.label_tag }}</label>
-                                        <div class="control">
-                                            {{field}}
-                                        </div>
-                                    </div>
-                                    {% for error in field.errors %}
-                                    <p>{{ error }}</p>
-                                    {% endfor %}
-                                    {% endfor %}
-                                </div>
-                                <div class="mt-20 has-text-right">
-                                    <button type="submit"
-                                            class="button btn-align info-btn  raised btn-outlined rounded">Save
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <!-- /Widget -->
-                </div>
-            </div>
-            <!-- /Stat tiles -->
-        </div>
-        <!-- /Main content -->
-    </div>
-    <!-- /Main view -->
-</div>
-
-{% endblock %}
+	{% render_bundle 'app' %}
+    <!-- built files will be auto injected -->
+  </body>
+</html>

@@ -12,7 +12,8 @@ lxml==4.2.3
 html5lib==1.0.1
 beautifulsoup4==4.6.3
 gevent==1.2.1
-whitenoise==4.0
 django-storages==1.7.1
 google==2.0.1
 google-cloud-storage==1.11.0
+django-webpack-loader==0.6.0
+pytz==2018.7

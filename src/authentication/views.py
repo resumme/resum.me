@@ -17,3 +17,8 @@ def signup(request):
     else:
         form = CustomUserCreationForm()
     return render(request, 'auth/signup.html', {'form': form})
+
+
+@login_required
+def dashboard(request):
+    return render(request, 'dashboard/dashboard.html')

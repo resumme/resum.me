@@ -1,232 +1,141 @@
+{% extends 'core/base-reloaded.html' %}
 {% load static web_tags i18n %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- Required Meta Tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-
-    <title>Resum.me - free resume builder</title>
-    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon"/>
-
-
-    <!--Core CSS -->
-    <link rel="stylesheet" href="{% static 'css/bulma.css' %}">
-    <link rel="stylesheet" href="{% static 'css/core_demo.css' %}">
-    <link rel="stylesheet" href="{% static 'css/app.css' %}">
-    <link rel="stylesheet" href="{% static 'css/core_deep-blue.css' %}">
-
-    <!-- Main JS -->
-    <script src="{% static 'js/app.js' %}"></script>
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111339121-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
-        gtag('js', new Date());
-
-        gtag('config', 'UA-111339121-1');
-    </script>
-    {% include 'cookies-policies.html' %}
-</head>
-
-<body>
-<!-- Hero and nav -->
-<div class="hero hero-wavyy is-relative is-theme-primary huge-pb" id="about-me">
-
-    {% include 'core/navbar.html' with is_profile=True %}
-    <!-- Hero image -->
-    <div id="main-hero" class="hero-body">
-        <div class="container has-text-centered">
-            <div class="columns is-vcentered">
-                <div class="column is-6 is-offset-3 has-text-centered">
-                    <div class="image-wrapper">
-                        {% if profile.avatar and profile.avatar.url %}
-                            <img style="border-radius: 50%; max-width: 150px;" src="{{ profile.avatar.url }}" alt="">
-                        {% else %}
-                            <img style="border-radius: 50%; max-width: 150px;"
-                                 src="{% static 'images/avatar_placeholder.png' %}" alt="">
-                        {% endif %}
-                    </div>
-                    <h1 class="subtitle is-3 light-text">
-                        {{ profile.full_name }}
-                    </h1>
-                    <h2 class="subtitle is-5 light-text">
-                        {{ profile.description }}
-                    </h2>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- /Hero image -->
-</div>
-<!-- /Hero and nav -->
-<!-- About me -->
-<section class="is-top">
-    <div class="columns">
-        <div class="column is-6 is-offset-3">
-            <div class="flex-card is-top light-bordered raised animated preFadeInUp fadeInUp" style="margin-top: -40px">
-                <!-- Profile details card -->
-                <div class="card-body">
-                    <div class="content">
-                        <h2 class="no-margin title-bold">About me</h2>
-                        <p class="pt-10">
-                            {{ profile.resume|safe }}
-                        </p>
-                    </div>
-                </div>
-                <!-- Profile details card -->
-            </div>
-        </div>
-    </div>
-</section>
-<!-- /About me -->
-<!-- Timeline -->
-<section class="section is-medium">
-    <div class="container">
-        {% if timeline %}
-            <!-- Responsive timelines -->
-            <div id="timeline" class="section-title-wrapper has-text-centered">
-                <h2 class="title section-title has-text-centered dark-text text-bold">
-                    My timeline
-                </h2>
-            </div>
-            <div class="columns is-vcentered pt-30">
-                <div class="column is-10 is-offset-1">
-                    <!-- Timeline -->
-                    <div class="timeline">
-                        {% for item in timeline %}
-                            <!-- Timeline item -->
-                            <div class="timeline-item">
-                                <div class="timeline-icon g-item">
-                                    <i class="sl
-                            {% if item.type == 'j' %}
-                                sl-icon-briefcase
-                            {% elif item.type == 'f' %}
-                                sl-icon-graduation
-                            {% elif item.type == 'e' %}
-                                sl-icon-bubbles
-                            {% elif item.type == 'c' %}
-                                sl-icon-badge
-                            {% endif %}
-
-                            "></i>
-                                </div>
-
-                                <div class="timeline-content {% if forloop.counter|divisibleby:2 %}right{% endif %}">
-                                    <div class="content-body">
-                                        <!--<img class="timeline-avatar" src="https://place-hold.it/250x250" alt="">-->
-                                        <div class="timeline-text">
-                                            <div>{{ item.title }}</div>
-                                            <div>{{ item.description }}</div>
-                                            <span class="timestamp">{{ item.start_date }}</span>
-                                            {% if  item.end_date %}
-                                                <span class="timestamp"> - {{ item.end_date }}</span>
-                                            {% endif %}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
-                    <!-- Timeline -->
-                </div>
-            </div>
-            <!-- /Responsive timelines -->
-        {% endif %}
-    </div>
-</section>
-<!-- /Timeline -->
-<!-- Courses -->
-{% if courses.all %}
-    <section id="courses" class="section section-feature-grey is-medium">
-
-        <div id="boxed-tabs" class="section-title-wrapper has-text-centered pt-60">
-
-            <h2 class="title section-title has-text-centered dark-text text-bold">
-                Courses
-            </h2>
-        </div>
-
-        <!-- Boxed tabs -->
-        <div class="columns is-vcentered">
-            <div class="column is-6 is-offset-3">
-                <!-- Demo section -->
-
-
-                <div class="navigation-tabs boxed-tabs">
-                    <div class="tabs is-boxed">
-                        <ul>
-                            <li data-tab="tab-all" class="is-active"><a><span>All courses</span></a></li>
-                            {% for category, courses in courses.items %}
-                                {% if category != 'all' %}
-                                    <li data-tab="tab-{{ category }}"><a><span>{{ category }}</span></a></li>
-                                {% endif %}
-                            {% endfor %}
-                        </ul>
-                    </div>
-                    {% for category, courses in courses.items %}
-                        <div id="tab-{{ category }}"
-                             class="navtab-content {% if category == 'all' %} is-active {% endif %}">
-                            <div class="columns is-vcentered">
-                                <div class="column is-8 is-offset-2">
-                                    {% for course in courses|slice:":18" %}
-
-                                        <div class="flex-card light-bordered hover-inset">
-                                            <div class="flex-card-header">
-                                                <div class="header-avatar">
-                                                    <img src="{{ course.badge }}">
-                                                </div>
-                                                <div class="header-info">
-                                                    <div class="header-title">{{ course.title }}</div>
-                                                    <div class="header-subtitle">{{ course.provider }}</div>
-                                                </div>
-                                            </div>
-                                            <div class="card-body is-small">
-                                                {% if course.description %}
-                                                    <div class="content">
-                                                        <p class="pb-10">{{ course.description }}</p>
-                                                    </div>
-                                                {% endif %}
-                                                <div class="has-text-right">
-                                                    <a href="{{ course.url }}"
-                                                       class="button btn-align btn-outlined accent-btn rounded raised">More
-                                                        info</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    {% endfor %}
-
-                                </div>
-                            </div>
-
-                        </div>
-
-                    {% endfor %}
-                </div>
-                <!-- /Demo section -->
-
-
-            </div>
-        </div>
-        <!-- /Boxed tabs -->
+{% block content %}
+<main class="profile-page">
+    <section class="section-profile-cover section-shaped my-0">
+      <!-- Circles background -->
+      <div class="shape shape-style-1 shape-primary alpha-4">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <!-- SVG separator -->
+      <div class="separator separator-bottom separator-skew">
+        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+          <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+      </div>
     </section>
-{% endif %}
-<!-- Courses -->
-{% include 'core/footer.html' %}
+    <section class="section">
+      <div class="container">
+        <div class="card card-profile shadow mt--300">
+          <div class="px-4">
+            <div class="row justify-content-center">
+              <div class="col-lg-3 order-lg-2">
+                <div class="card-profile-image">
+                         {% if profile.avatar and profile.avatar.url %}
+                            <img src="{{ profile.avatar.url }}" class="rounded-circle">
+                        {% else %}
+                                                <img src="{% static 'images/avatar_placeholder.png' %}" class="rounded-circle">
+                        {% endif %}
 
-<!-- Back To Top Button -->
-<div id="backtotop"><a href="#"></a></div>
+                </div>
+              </div>
+              <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
+                <div class="card-profile-actions py-4 mt-lg-0">
+                  <a href="#" class="btn btn-sm btn-info mr-4"><i class="fa fa-2x fa-linkedin-square"></i> Linked-in</a>
+                  <a href="#" class="btn btn-sm btn-default float-right mr-1"><i class="fa-2x fa fa-github"></i></a>
+                  <a href="#" class="btn btn-sm btn-default float-right mr-1"><i class="fa-2x fa fa-facebook"></i></a>
+                  <a href="#" class="btn btn-sm btn-default float-right mr-1"><i class="fa-2x fa fa-twitter"></i></a>
+                </div>
+              </div>
+              <div class="col-lg-4 order-lg-1">
+                <div class="card-profile-stats d-flex justify-content-center">
+                  <div>
+                    <span class="heading">{{ courses.all | length }}</span>
+                    <span class="description">Total Courses</span>
+                  </div>
+                  <div>
+                    <span class="heading">{{ courses | length }}</span>
+                    <span class="description">Total Skills</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center mt-5">
+              <h3>{{ profile.full_name }}</h3>
+              <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>{{ profile.description }}</div>
+            </div>
+            <div class="mt-5 py-5 border-top">
+              <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                  <p>{{ profile.resume|safe }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  {% if timeline %}
+  <section class="section">
+    <div class="container">
+	<div class="row">
+		<div class="col-md-6 offset-md-3">
+			<h4>Timeline</h4>
+			<ul class="timeline">
+                {% for item in timeline %}
+				<li>
+					<a>{{ item.title }}</a>
+					<a class="float-right">{{ item.start_date }} {% if item.end_date %}- {{item.end_date}} {% endif %}</a>
+					<p>{{ item.description }}</p>
+				</li>
+              {% endfor %}
+			</ul>
+		</div>
+	</div>
+</div>
 
-<!-- Bulkit js -->
-<script src="{% static 'js/landingv2.js' %}"></script>
-<script src="{% static 'js/auth.js' %}"></script>
-<script src="{% static 'js/main.js' %}"></script>
-</body>
-</html>
+  </section>
+  {% endif %}
+  {% if courses.all %}
+  <section class="section">
+    <div class="container">
+	<div class="row">
+        <div class="col-md-10 offset-md-1" ><div class="card shadow">
+            <div class="card-header border-0">
+              <span class="h3 mb-0">Courses</span>
+            </div>
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+                  <tbody>
+                                  {% for course in courses.all %}
+
+                  <tr>
+                    <th scope="row">
+                      <div class="media align-items-center">
+                        <a class="avatar rounded-circle mr-3">
+                          <img src="{{ course.badge }}">
+                        </a>
+                        <div class="media-body">
+                          <span class="mb-0 text-sm">{{ course.title }}</span>
+                        </div>
+                      </div>
+                    </th>
+                    <td>
+                      {{ course.provider }}
+                    </td>
+                    <td><button type="button" href="{{ course.url }}" class="btn btn-outline-primary btn-sm btn-block">More info</button></td>
+                  </tr>
+                                  {% endfor %}
+
+                </tbody>
+              </table>
+            </div>
+            <div class="card-footer py-4">
+              <nav aria-label="...">
+
+              </nav>
+            </div>
+          </div></div>
+	</div>
+</div>
+
+  </section>
+  {% endif %}
+  </main>
+{% endblock %}

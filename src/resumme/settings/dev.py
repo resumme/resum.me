@@ -17,3 +17,11 @@ DATABASES = {
         'PORT': 5432,
     }
 }
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'CACHE': not DEBUG,
+        'BUNDLE_DIR_NAME': '/bundles/',  # must end with slash
+        'STATS_FILE': os.path.join(VUE_APP_DIR, 'webpack-stats.json'),
+    }
+}

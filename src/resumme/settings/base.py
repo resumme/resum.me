@@ -12,9 +12,14 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+VUE_APP_DIR = os.path.join(BASE_DIR, 'dashboard')
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
-# Application definition
+print(BASE_DIR)
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -30,12 +35,12 @@ INSTALLED_APPS = [
     'landing',
     'dashboard',
     'taggit',
-    'django_extensions'
+    'django_extensions',
+    'webpack_loader',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -49,7 +54,7 @@ ROOT_URLCONF = 'resumme.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [TEMPLATES_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -97,17 +102,26 @@ USE_L10N = True
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.11/howto/static-files/
+# https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = './static/'
 
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'frontend/dist'),
+)
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'CACHE': not DEBUG,
+        'BUNDLE_DIR_NAME': '/bundles/',  # must end with slash
+        'STATS_FILE': os.path.join(VUE_APP_DIR, 'webpack-stats.json'),
+    }
+}
 
 
-# App settings
+# Auth settings
 LOGIN_REDIRECT_URL = '/r/dashboard'
 
+# Email settings
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_HOST_USER = 'apikey'
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
@@ -119,11 +133,3 @@ DEFAULT_FROM_EMAIL = 'help@resum.me'
 # All environments use the google storage
 DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
 GS_BUCKET_NAME = 'bluekiri-kiri-pro-resumme-static'
-
-
-TEMPLATE_LOADERS = (
-    ('django.template.loaders.cached.Loader', (
-        'django.template.loaders.filesystem.Loader',
-        'django.template.loaders.app_directories.Loader',
-    )),
-)

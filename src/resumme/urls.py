@@ -42,4 +42,5 @@ urlpatterns = [
     url(r'^$', landing_page, name='landing'),
 
     url(r'^(?P<username>\w{0,50})/$', include('profiles.urls')),
+    url(r'^r/api/', include('api.urls')),
 ]

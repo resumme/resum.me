@@ -35,8 +35,10 @@ INSTALLED_APPS = [
     'templates',
     'landing',
     'dashboard',
+    'api',
     'taggit',
     'django_extensions',
+    'rest_framework',
     'webpack_loader',
 ]
 
@@ -137,3 +139,9 @@ DEFAULT_FROM_EMAIL = 'help@resum.me'
 # All environments use the google storage
 DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
 GS_BUCKET_NAME = 'bluekiri-kiri-pro-resumme-static'
+
+# API configuration
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}

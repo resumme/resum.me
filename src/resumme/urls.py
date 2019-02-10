@@ -15,9 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import include
 from django.conf.urls import url
-from django.urls import path
 from django.contrib import admin
-from django.views.generic import TemplateView
 
 
 from landing.views import landing_page

@@ -16,10 +16,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 VUE_APP_DIR = os.path.join(BASE_DIR, 'dashboard')
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
-print(BASE_DIR)
-
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'fakesecretkey'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -104,11 +105,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'https://storage.googleapis.com/bluekiri-kiri-pro-resumme-static/static/'
+
+STATIC_ROOT = 'static/'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'frontend/dist'),
+    os.path.join(BASE_DIR, 'dist'),
 )
+
 WEBPACK_LOADER = {
     'DEFAULT': {
         'CACHE': not DEBUG,

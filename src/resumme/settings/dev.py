@@ -1,10 +1,10 @@
 from .base import *
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'fakesecretkey'
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
+STATIC_URL = os.path.join(VUE_APP_DIR, 'public/')
+STATIC_ROOT = None
 
 ALLOWED_HOSTS = ['*']
 
@@ -17,6 +17,11 @@ DATABASES = {
         'PORT': 5432,
     }
 }
+
+#  Required to serve the files while we use Gunicorn in dev env
+MIDDLEWARE += [
+  'whitenoise.middleware.WhiteNoiseMiddleware',
+]
 
 WEBPACK_LOADER = {
     'DEFAULT': {

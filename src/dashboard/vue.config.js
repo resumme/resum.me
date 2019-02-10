@@ -1,9 +1,13 @@
 const BundleTracker = require("webpack-bundle-tracker");
 
 module.exports = {
-    baseUrl: "http://0.0.0.0:8080/",
+    publicPath: process.env.PUBLIC_PATH,
     outputDir: '../dist/',
-
+      configureWebpack: {
+    output: {
+      libraryExport: 'default'
+        }
+    },
     chainWebpack: config => {
 
         config.optimization

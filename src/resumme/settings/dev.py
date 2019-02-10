@@ -3,8 +3,12 @@ from .base import *
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-STATIC_URL = os.path.join(VUE_APP_DIR, 'public/')
+# Only use the dev statics
+STATIC_URL = '/dashboard/public/'
 STATIC_ROOT = None
+STATICFILES_DIRS = (
+    os.path.join(VUE_APP_DIR, 'public'),
+)
 
 ALLOWED_HOSTS = ['*']
 

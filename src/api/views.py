@@ -29,7 +29,9 @@ class UserViewSet(viewsets.ModelViewSet):
 
 class UserCoursesView(ListAPIView):
     """
-    ### Product detail
+    User must be logged to manage his data.
+
+    This endpoint allows you to view your courses.
     """
     queryset = CourseStatus.objects.all()
     serializer_class = CousesStatusSerializer
@@ -40,13 +42,15 @@ def get_queryset(self):
 
 class UserDataListUpdateView(RetrieveUpdateAPIView):
     """
-    ### Product detail
+    User must be logged to manage his data.
+
+    This endpoint allows you to view and modify your user profile data.
     """
     queryset = Bio.objects.all()
     serializer_class = BioSerializer
 
-    # def get_queryset(self):
-    #     return self.queryset.filter(user=self.request.user)
+    def get_queryset(self):
+        return self.queryset.filter(user=self.request.user)
 
     def get_object(self):
         queryset = self.get_queryset()

@@ -1,51 +1,45 @@
-{% extends 'auth/base-auth.html' %}
+{% extends 'auth/base-auth-reloaded.html' %}
 {% load i18n %}
 
 {% block title %}Resum - Log in{% endblock %}
-{% block form %}
-    <div id="login-card" class="animated preFadeInLeft fadeInLeft">
-         {% if form.errors %}
-            <p class="tag is-danger is-medium">
-                {% trans "Your username and password didn't match. Please try again." %}
-            </p>
-        {% endif %}
-        <div class="flex-card clean-login-card">
-            <h2 class="text-bold dark-text">Log in</h2>
-            <form method="post" class="pt-10 pb-10" id="form">
-                {% csrf_token %}
-                <input type="hidden" name="next" value="{{ next }}"/>
-                <div class="control-material is-primary">
-                    <input class="material-input" type="text" id="id_username" type="text" name="username" required>
-                    <span class="material-highlight"></span>
-                    <span class="bar"></span>
-                    <label>Email</label>
-                </div>
-                <div class="control-material is-primary">
-                    <input class="material-input" id="id_password" type="password" name="password" required>
-                    <span class="material-highlight"></span>
-                    <span class="bar"></span>
-                    <label>Password</label>
-                </div>
-                <div class="field pt-20">
-                    <div class="control">
-                        <label class="checkbox-wrap is-medium">
-                            <input id="check2" type="checkbox" class="d-checkbox">
-                            <span></span>
-                            Remember me
-                        </label>
-                    </div>
-                </div>
-                <div class="pt-20 pb-20">
-                    <button class="button button-cta btn-align primary-btn is-fullwidth rounded raised no-lh"
-                            onclick="document.getElementById('form').submit();">Login
-                    </button>
-                </div>
-            </form>
-        </div>
-
-        <p class="has-text-centered pt-20 pb-20">
-            <a id="show-recover" class="no-account is-secondary" href="{% url 'password_reset' %}">Lost your
-                password?</a>
-        </p>
+{% block auth_form %}
+<div class="card-body px-lg-5 py-lg-5">
+<div class="text-center text-muted mb-4">
+  <small>Sign in with credentials</small>
+</div>
+<form method="post" id="auth_form">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ next }}"/>
+  <div class="form-group mb-3">
+    <div class="input-group input-group-alternative">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+      </div>
+      <input class="form-control" placeholder="Email" type="text" id="id_username" type="text" name="username" required>
     </div>
+  </div>
+  <div class="form-group">
+    <div class="input-group input-group-alternative">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+      </div>
+      <input class="form-control" placeholder="Password" id="id_password" type="password" name="password" required>
+    </div>
+  </div>
+  <div class="custom-control custom-control-alternative custom-checkbox">
+    <input class="custom-control-input" id=" customCheckLogin" type="checkbox">
+    <label class="custom-control-label" for=" customCheckLogin">
+      <span>Remember me</span>
+    </label>
+  </div>
+             {% if form.errors %}
+    <div class="alert alert-danger mt-3" role="alert">
+    <strong>Upps!</strong> {% trans "Your username and password didn't match. Please try again." %}
+</div>
+        {% endif %}
+  <div class="text-center">
+    <button type="button" onclick="document.getElementById('auth_form').submit();" class="btn btn-primary my-4">Sign in</button>
+  </div>
+</form>
+</div>
 {% endblock %}

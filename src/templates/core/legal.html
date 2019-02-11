@@ -1,115 +1,85 @@
-{% extends 'core/base_legal.html' %}
+{% extends 'core/base-reloaded.html' %}
 
 {% block title %}Resum.me - privacy{% endblock %}
 
 {% block content %}
-    <!-- Hero and nav -->
-    <div class="hero is-theme-primary">
 
-          <!-- Help title -->
-        <div id="main-hero" class="hero-body">
-            {% include 'core/navbar.html' with is_profile=False %}
-            <div class="container">
-                <div class="columns is-vcentered pt-40">
-                    <div class="column"></div>
-                    <div class="column is-9">
-                        <div class="help-header pb-20">
-                            <h1 class="title is-4">Privacy Policy of Resum.me</h1>
-                        </div>
-                    </div>
-                    <div class="column"></div>
-                </div>
-            </div>
+
+{% include 'core/hero-legal.html' %}
+<section class="section section-components pb-0">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-12">
+              <div class="legal-text">
+           <ul>
+        <li>Resum.me collects some Personal Data from its Users</li>
+        <li>Owner and Data Controller</li>
+        <li>Resum.me</li>
+        <li><b>Owner contact email: </b>resummeapp@gmail.com</li>
+    </ul>
+
+    <h4 class="subtitle is-5 dark-text">Types of Data collected</h4>
+    <p>Among the types of Personal Data that Resum.me collects, by itself or through third parties, there are: Cookies, Usage Data, various types of Data and email address.
+    Complete details on each type of Personal Data collected are provided in the dedicated sections of this privacy policy or by specific explanation texts displayed prior to the Data collection.
+    Personal Data may be freely provided by the User, or, in case of Usage Data, collected automatically when using Resum.me.
+    Unless specified otherwise, all Data requested by Resum.me is mandatory and failure to provide this Data may make it impossible for Resum.me to provide its services. In cases where Resum.me specifically states that some Data is not mandatory, Users are free not to communicate this Data without consequences to the availability or the functioning of the Service.
+    Users who are uncertain about which Personal Data is mandatory are welcome to contact the Owner.
+    Any use of Cookies – or of other tracking tools – by Resum.me or by the owners of third-party services used by Resum.me serves the purpose of providing the Service required by the User, in addition to any other purposes described in the present document and in the Cookie Policy, if available.
+    Users are responsible for any third-party Personal Data obtained, published or shared through Resum.me and confirm that they have the third party's consent to provide the Data to the Owner.
+    Mode and place of processing the Data
+    </p>
+    <h4 class="subtitle is-5 dark-text">Methods of processing</h4>
+    <p>The Owner takes appropriate security measures to prevent unauthorized access, disclosure, modification, or unauthorized destruction of the Data.
+    The Data processing is carried out using computers and/or IT enabled tools, following organizational procedures and modes strictly related to the purposes indicated. In addition to the Owner, in some cases, the Data may be accessible to certain types of persons in charge, involved with the operation of Resum.me (administration, sales, marketing, legal, system administration) or external parties (such as third-party technical service providers, mail carriers, hosting providers, IT companies, communications agencies) appointed, if necessary, as Data Processors by the Owner. The updated list of these parties may be requested from the Owner at any time.
+    </p>
+    <h4 class="subtitle is-5 dark-text">Methods of processing</h4>
+    <p>The Owner may process Personal Data relating to Users if one of the following applies:</p>
+    <ul>
+        <li>Users have given their consent for one or more specific purposes. Note: Under some legislations the Owner may be allowed to process Personal Data until the User objects to such processing (“opt-out”), without having to rely on consent or any other of the following legal bases. This, however, does not apply, whenever the processing of Personal Data is subject to European data protection law.</li>
+        <li>Provision of Data is necessary for the performance of an agreement with the User and/or for any pre-contractual obligations thereof</li>
+        <li>Processing is necessary for compliance with a legal obligation to which the Owner is subject</li>
+        <li>Processing is related to a task that is carried out in the public interest or in the exercise of official authority vested in the Owner</li>
+        <li>Processing is necessary for the purposes of the legitimate interests pursued by the Owner or by a third party.</li>
+    </ul>
+    <p>In any case, the Owner will gladly help to clarify the specific legal basis that applies to the processing, and in particular whether the provision of Personal Data is a statutory or contractual requirement, or a requirement necessary to enter into a contract.</p>
+    <h4 class="subtitle is-5 dark-text">Place</h4>
+    <p>The Data is processed at the Owner's operating offices and in any other places where the parties involved in the processing are located.
+
+    Depending on the User's location, data transfers may involve transferring the User's Data to a country other than their own.
+    If any such transfer takes place, Users can find out more by checking the relevant sections of this document or inquire with the Owner using the information provided in the contact section.
+    </p>
+    <h4 class="subtitle is-5 dark-text">Retention time</h4>
+    <p>Personal Data shall be processed and stored for as long as required by the purpose they have been collected for.</p>
+    <ul>
+        <li>Personal Data collected for purposes related to the performance of a contract between the Owner and the User shall be retained until such contract has been fully performed.</li>
+        <li>Personal Data collected for the purposes of the Owner’s legitimate interests shall be retained as long as needed to fulfill such purposes. Users may find specific information regarding the legitimate interests pursued by the Owner within the relevant sections of this document or by contacting the Owner.</li>
+    </ul>
+    <p>The Owner may be allowed to retain Personal Data for a longer period whenever the User has given consent to such processing, as long as such consent is not withdrawn. Furthermore, the Owner may be obliged to retain Personal Data for a longer period whenever required to do so for the performance of a legal obligation or upon order of an authority.
+
+    Once the retention period expires, Personal Data shall be deleted. Therefore, the right to access, the right to erasure, the right to rectification and the right to data portability cannot be enforced after expiration of the retention period.
+    The purposes of processing
+    The Data concerning the User is collected to allow the Owner to provide its Services, as well as for the following purposes: Analytics, Interaction with external social networks and platforms, Data transfer outside the EU, Advertising, Content performance and features testing (A/B testing), Contacting the User, Displaying content from external platforms, Handling payments, Hosting and backend infrastructure, Infrastructure monitoring, Remarketing and behavioral targeting, Tag Management, Managing support and contact requests, Registration and authentication, Managing contacts and sending messages and Access to third-party accounts.
+    Users can find further detailed information about such purposes of processing and about the specific Personal Data used for each purpose in the respective sections of this document.
+    </p>
+    <h4 class="subtitle is-5 dark-text">Automated decision-making</h4>
+    <p>Automated decision-making means that a decision which is likely to have legal effects or similarly significant effects on the User, is taken solely by technological means, without any human intervention. Resum.me may use the User's Personal Data to make decisions entirely or partially based on automated processes according to the purposes outlined in this document. Resum.me adopts automated decision-making processes as far as necessary to enter into or perform a contract between User and Owner, or on the basis of the User’s explicit consent, where such consent is required by the law.
+    Automated decisions are made by technological means – mostly based on algorithms subject to predefined criteria – which may also be provided by third parties.
+    The rationale behind the automated decision making is:
+    </p>
+    <ul>
+        <li>to enable or otherwise improve the decision-making process</li>
+        <li>to grant Users fair and unbiased treatment based on consistent and uniform criteria</li>
+        <li>to reduce the potential harm derived from human error, personal bias and the like which may potentially lead to discrimination or imbalance in the treatment of individuals etc</li>
+        <li>to reduce the risk of User's failure to meet their obligation under a contract. To find out more about the purposes, the third-party services, if any, and any specific rationale for automated decisions used within Resum.me, Users can check the relevant sections in this document</li>
+    </ul>
+    <h4 class="subtitle is-5 dark-text">Changes to this privacy policy</h4>
+    <p>The Owner reserves the right to make changes to this privacy policy at any time by giving notice to its Users on this page and possibly within Resum.me and/or - as far as technically and legally feasible - sending a notice to Users via any contact information available to the Owner. It is strongly recommended to check this page often, referring to the date of the last modification listed at the bottom. </p>
+    <p><b>Latest update: </b>Jul 22, 2018</p>
+   </div>
+          </div>
         </div>
-        <!-- /Help title -->
-    </div>
-    <!-- /Hero and nav -->
+      </div>
+    </section>
 
-    <!-- Article section -->
-    <div class="section help-section is-relative">
-        <div class="container">
-            <div class="columns is-vcentered">
-                <div class="column"></div>
-                <div class="column is-9 help-container">
-                    <!-- Article body -->
-                    <div class="flex-card single-help-article">
-                        <div class="article-inner">
-                            <!-- Article content -->
-                            <div class="content">
-                                <ul>
-                                    <li>Resum.me collects some Personal Data from its Users</li>
-                                    <li>Owner and Data Controller</li>
-                                    <li>Resum.me</li>
-                                    <li><b>Owner contact email: </b>resummeapp@gmail.com</li>
-                                </ul>
-
-                                <h4 class="subtitle is-5 dark-text">Types of Data collected</h4>
-                                <p>Among the types of Personal Data that Resum.me collects, by itself or through third parties, there are: Cookies, Usage Data, various types of Data and email address.
-                                Complete details on each type of Personal Data collected are provided in the dedicated sections of this privacy policy or by specific explanation texts displayed prior to the Data collection.
-                                Personal Data may be freely provided by the User, or, in case of Usage Data, collected automatically when using Resum.me.
-                                Unless specified otherwise, all Data requested by Resum.me is mandatory and failure to provide this Data may make it impossible for Resum.me to provide its services. In cases where Resum.me specifically states that some Data is not mandatory, Users are free not to communicate this Data without consequences to the availability or the functioning of the Service.
-                                Users who are uncertain about which Personal Data is mandatory are welcome to contact the Owner.
-                                Any use of Cookies – or of other tracking tools – by Resum.me or by the owners of third-party services used by Resum.me serves the purpose of providing the Service required by the User, in addition to any other purposes described in the present document and in the Cookie Policy, if available.
-                                Users are responsible for any third-party Personal Data obtained, published or shared through Resum.me and confirm that they have the third party's consent to provide the Data to the Owner.
-                                Mode and place of processing the Data
-                                </p>
-                                <h4 class="subtitle is-5 dark-text">Methods of processing</h4>
-                                <p>The Owner takes appropriate security measures to prevent unauthorized access, disclosure, modification, or unauthorized destruction of the Data.
-                                The Data processing is carried out using computers and/or IT enabled tools, following organizational procedures and modes strictly related to the purposes indicated. In addition to the Owner, in some cases, the Data may be accessible to certain types of persons in charge, involved with the operation of Resum.me (administration, sales, marketing, legal, system administration) or external parties (such as third-party technical service providers, mail carriers, hosting providers, IT companies, communications agencies) appointed, if necessary, as Data Processors by the Owner. The updated list of these parties may be requested from the Owner at any time.
-                                </p>
-                                <h4 class="subtitle is-5 dark-text">Methods of processing</h4>
-                                <p>The Owner may process Personal Data relating to Users if one of the following applies:</p>
-                                <ul>
-                                    <li>Users have given their consent for one or more specific purposes. Note: Under some legislations the Owner may be allowed to process Personal Data until the User objects to such processing (“opt-out”), without having to rely on consent or any other of the following legal bases. This, however, does not apply, whenever the processing of Personal Data is subject to European data protection law.</li>
-                                    <li>Provision of Data is necessary for the performance of an agreement with the User and/or for any pre-contractual obligations thereof</li>
-                                    <li>Processing is necessary for compliance with a legal obligation to which the Owner is subject</li>
-                                    <li>Processing is related to a task that is carried out in the public interest or in the exercise of official authority vested in the Owner</li>
-                                    <li>Processing is necessary for the purposes of the legitimate interests pursued by the Owner or by a third party.</li>
-                                </ul>
-                                <p>In any case, the Owner will gladly help to clarify the specific legal basis that applies to the processing, and in particular whether the provision of Personal Data is a statutory or contractual requirement, or a requirement necessary to enter into a contract.</p>
-                                <h4 class="subtitle is-5 dark-text">Place</h4>
-                                <p>The Data is processed at the Owner's operating offices and in any other places where the parties involved in the processing are located.
-
-                                Depending on the User's location, data transfers may involve transferring the User's Data to a country other than their own.
-                                If any such transfer takes place, Users can find out more by checking the relevant sections of this document or inquire with the Owner using the information provided in the contact section.
-                                </p>
-                                <h4 class="subtitle is-5 dark-text">Retention time</h4>
-                                <p>Personal Data shall be processed and stored for as long as required by the purpose they have been collected for.</p>
-                                <ul>
-                                    <li>Personal Data collected for purposes related to the performance of a contract between the Owner and the User shall be retained until such contract has been fully performed.</li>
-                                    <li>Personal Data collected for the purposes of the Owner’s legitimate interests shall be retained as long as needed to fulfill such purposes. Users may find specific information regarding the legitimate interests pursued by the Owner within the relevant sections of this document or by contacting the Owner.</li>
-                                </ul>
-                                <p>The Owner may be allowed to retain Personal Data for a longer period whenever the User has given consent to such processing, as long as such consent is not withdrawn. Furthermore, the Owner may be obliged to retain Personal Data for a longer period whenever required to do so for the performance of a legal obligation or upon order of an authority.
-
-                                Once the retention period expires, Personal Data shall be deleted. Therefore, the right to access, the right to erasure, the right to rectification and the right to data portability cannot be enforced after expiration of the retention period.
-                                The purposes of processing
-                                The Data concerning the User is collected to allow the Owner to provide its Services, as well as for the following purposes: Analytics, Interaction with external social networks and platforms, Data transfer outside the EU, Advertising, Content performance and features testing (A/B testing), Contacting the User, Displaying content from external platforms, Handling payments, Hosting and backend infrastructure, Infrastructure monitoring, Remarketing and behavioral targeting, Tag Management, Managing support and contact requests, Registration and authentication, Managing contacts and sending messages and Access to third-party accounts.
-                                Users can find further detailed information about such purposes of processing and about the specific Personal Data used for each purpose in the respective sections of this document.
-                                </p>
-                                <h4 class="subtitle is-5 dark-text">Automated decision-making</h4>
-                                <p>Automated decision-making means that a decision which is likely to have legal effects or similarly significant effects on the User, is taken solely by technological means, without any human intervention. Resum.me may use the User's Personal Data to make decisions entirely or partially based on automated processes according to the purposes outlined in this document. Resum.me adopts automated decision-making processes as far as necessary to enter into or perform a contract between User and Owner, or on the basis of the User’s explicit consent, where such consent is required by the law.
-                                Automated decisions are made by technological means – mostly based on algorithms subject to predefined criteria – which may also be provided by third parties.
-                                The rationale behind the automated decision making is:
-                                </p>
-                                <ul>
-                                    <li>to enable or otherwise improve the decision-making process</li>
-                                    <li>to grant Users fair and unbiased treatment based on consistent and uniform criteria</li>
-                                    <li>to reduce the potential harm derived from human error, personal bias and the like which may potentially lead to discrimination or imbalance in the treatment of individuals etc</li>
-                                    <li>to reduce the risk of User's failure to meet their obligation under a contract. To find out more about the purposes, the third-party services, if any, and any specific rationale for automated decisions used within Resum.me, Users can check the relevant sections in this document</li>
-                                </ul>
-                                <h4 class="subtitle is-5 dark-text">Changes to this privacy policy</h4>
-                                <p>The Owner reserves the right to make changes to this privacy policy at any time by giving notice to its Users on this page and possibly within Resum.me and/or - as far as technically and legally feasible - sending a notice to Users via any contact information available to the Owner. It is strongly recommended to check this page often, referring to the date of the last modification listed at the bottom. </p>
-                                <p><b>Latest update: </b>Jul 22, 2018</p>
-                            </div>
-                            <!-- /Article content -->
-                        </div>
-                    </div>
-                    <!-- /Article body -->
-                </div>
-                <div class="column"></div>
-            </div>
-        </div>
-    </div>
-    <!-- Article section -->
 {% endblock %}
 

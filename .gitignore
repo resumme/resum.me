@@ -5,6 +5,7 @@ db.*
 # Compiled assets
 src/media/
 src/static/
+src/dist/
 
 
 # Byte-compiled / optimized / DLL files

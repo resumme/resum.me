@@ -1,42 +1,17 @@
-{% extends 'core/base_legal.html' %}
+{% extends 'core/base-reloaded.html' %}
 
-{% block title %}Resum.me - privacy{% endblock %}
+{% block title %}Resum.me - terms{% endblock %}
 
 {% block content %}
-    <!-- Hero and nav -->
-    <div class="hero is-theme-primary">
 
-          <!-- Help title -->
-        <div id="main-hero" class="hero-body">
-            {% include 'core/navbar.html' with is_profile=False %}
-            <div class="container">
-                <div class="columns is-vcentered pt-40">
-                    <div class="column"></div>
-                    <div class="column is-9">
-                        <div class="help-header pb-20">
-                            <h1 class="title is-4">Terms and Conditions</h1>
-                        </div>
-                    </div>
-                    <div class="column"></div>
-                </div>
-            </div>
-        </div>
-        <!-- /Help title -->
-    </div>
-    <!-- /Hero and nav -->
 
-    <!-- Article section -->
-    <div class="section help-section is-relative">
-        <div class="container">
-            <div class="columns is-vcentered">
-                <div class="column"></div>
-                <div class="column is-9 help-container">
-                    <!-- Article body -->
-                    <div class="flex-card single-help-article">
-                        <div class="article-inner">
-                            <!-- Article content -->
-                            <div class="content">
-                                <p>This page details the Terms and Conditions (henceforth "Terms") through which, by use of the Resum.me website and any of its subsidiaries, you enter into a binding agreement between you, the User (henceforth "User"), and Resum.me Inc. (henceforth "Resum.me"). If you do not agree to any and all of the Terms laid out in this document you should cease to use Resum.me and all of its services and products.</p>
+{% include 'core/hero-legal.html' %}
+<section class="section section-components pb-0">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-12">
+              <div class="legal-text">
+                               <p>This page details the Terms and Conditions (henceforth "Terms") through which, by use of the Resum.me website and any of its subsidiaries, you enter into a binding agreement between you, the User (henceforth "User"), and Resum.me Inc. (henceforth "Resum.me"). If you do not agree to any and all of the Terms laid out in this document you should cease to use Resum.me and all of its services and products.</p>
 
                                 <h4 class="subtitle is-5 dark-text">TERMS OF ACCEPTABLE USE</h4>
                                 <p>By using or viewing Resum.me (the "Service") you consent to abide by and agree to the Resum.me Terms and Conditions as well as the Resum.me Privacy Policy. If you do not agree to anything contained within the Terms and Conditions or the Privacy Policy, you should immediately leave this site. By accessing Resum.me you agree that you shall not replicate, sell, or reproduce in any way the Design, Services, or Content of Resum.me These Terms and Conditions may be modified or altered at any time, without notice. The content on Resum.me includes both content created by Resum.me and content created by third parties. The content on this website is provided on a strictly "as is" basis and Resum.me accepts no responsibility for its accuracy or integrity.
@@ -96,16 +71,11 @@
 
                                 THESE TERMS AND CONDITIONS MAKE UP A BINDING CONTRACT BETWEEN THE USER AND Resum.me WHICH IS ACCEPTED BY THE USER UPON THE USE OF ANY PART OF Resum.me.
                                 </p>
-                            </div>
-                            <!-- /Article content -->
-                        </div>
-                    </div>
-                    <!-- /Article body -->
-                </div>
-                <div class="column"></div>
-            </div>
+   </div>
+          </div>
         </div>
-    </div>
-    <!-- Article section -->
+      </div>
+    </section>
+
 {% endblock %}
 

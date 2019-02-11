@@ -1,0 +1,61 @@
+{% load render_bundle from webpack_loader %}
+{% load static web_tags i18n %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Keep your resumme always updated is a pain in the neck. We connect with your favourite online schools in order to have your resume always up to date.">
+  <meta name="author" content="Resum.me">
+  <title>{% block title %}Resum.me - Online learning made easy{% endblock %}</title>
+  <!-- Favicon -->
+  <link href="{% static 'images/favicon.ico' %}" rel="icon" type="image/png">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <!-- Icons -->
+  <link href="{% static 'vendor/nucleo/css/nucleo.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <!-- Argon CSS -->
+  <link type="text/css" href="{% static 'css/argon.css' %}" rel="stylesheet">
+  <!-- Docs CSS -->
+  <link type="text/css" href="{% static 'css/docs.min.css' %}" rel="stylesheet">
+</head>
+
+<body>
+  {% block header %}
+    {% include 'core/navbar-reloaded.html' %}
+  {% endblock %}
+  {% block content %}{% endblock %}
+  {% include 'core/footer-reloaded.html' %}
+  <!-- Core -->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/popper/popper.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/bootstrap.min.js' %}"></script>
+  <script src="{% static 'vendor/headroom/headroom.min.js' %}"></script>
+  <!-- Argon JS -->
+  <script src="{% static 'js/argon.js' %}"></script>
+
+  <!-- Cookies Scripts -->
+  {% include 'cookies-policies.html' %}
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111339121-1"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+          dataLayer.push(arguments);
+      }
+
+      gtag('js', new Date());
+
+      gtag('config', 'UA-111339121-1');
+  </script>
+
+  {% block extra_js %}
+  <!-- This block can be used to do shitty Jquery stuff on each specific page -->
+  {% endblock %}
+</body>
+
+</html>

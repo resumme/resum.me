@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404
 
 from rest_framework import viewsets
 from rest_framework.generics import RetrieveUpdateAPIView, ListAPIView
-from core.models import Bio, CourseStatus
+from core.models import UserProfile, CourseStatus
 
 from .serializers import UserSerializer, BioSerializer, CousesStatusSerializer, BioRestrictedSerializer
 
@@ -20,7 +20,7 @@ class UserViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows bios to be viewed or edited.
     """
-    queryset = Bio.objects.all()
+    queryset = UserProfile.objects.all()
     serializer_class = BioSerializer
 
     def get_queryset(self):
@@ -58,7 +58,7 @@ class UserDataListUpdateView(RetrieveUpdateAPIView):
 
     This endpoint allows you to view and modify your user profile data.
     """
-    queryset = Bio.objects.all()
+    queryset = UserProfile.objects.all()
     serializer_class = BioSerializer
 
     def put(self, request, *args, **kwargs):

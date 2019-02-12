@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from .models import ProviderProfile, Provider, Course, Bio, CourseStatus
+from .models import ProviderProfile, Provider, Course, UserProfile, CourseStatus
 from integration.clients import TreehouseIntegration, SoloLearnIntegration
 from integration.exceptions import ProviderRequestError
 
@@ -18,7 +18,7 @@ def update_db_data(user_instance):
             ProviderProfile.objects.get_or_create(user=user_instance, provider=provider)
 
     def init_user_bio(user_instance):
-        empty_bio, created = Bio.objects.get_or_create(user=user_instance)
+        empty_bio, created = UserProfile.objects.get_or_create(user=user_instance)
 
     def manage_relation_course_profile(profile, course, status):
         """

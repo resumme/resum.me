@@ -1,5 +1,5 @@
 from django.contrib import admin
-from core.models import ProviderProfile, Course, Provider, CourseStatus, Bio, TimelineItem
+from core.models import ProviderProfile, Course, Provider, CourseStatus, UserProfile, TimelineItem
 
 
 class CourseStatusAdmin(admin.ModelAdmin):
@@ -31,5 +31,5 @@ admin.site.register(ProviderProfile, ProviderProfileAdmin)
 admin.site.register(Course, CourseAdmin)
 admin.site.register(Provider)
 admin.site.register(TimelineItem)
-admin.site.register(Bio, BioAdmin)
+admin.site.register(UserProfile, BioAdmin)
 admin.site.register(CourseStatus, CourseStatusAdmin)

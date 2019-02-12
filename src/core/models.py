@@ -35,7 +35,7 @@ class Course(models.Model):
         return self.title
 
 
-class Bio(models.Model):
+class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=256, blank=True)
     last_name = models.CharField(max_length=256, blank=True)

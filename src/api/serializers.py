@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from core.models import Bio, CourseStatus, Course, ProviderProfile
+from core.models import UserProfile, CourseStatus, Course, ProviderProfile
 from rest_framework import serializers
 from rest_framework import serializers
 
@@ -15,13 +15,13 @@ class BioSerializer(serializers.ModelSerializer):
     user = UserSerializer()
 
     class Meta:
-        model = Bio
+        model = UserProfile
         fields = ('user', 'first_name', 'last_name', 'mail', 'description', 'resume', 'birth_date', 'avatar')
 
 
 class BioRestrictedSerializer(BioSerializer):
     class Meta:
-        model = Bio
+        model = UserProfile
         fields = ('bio',)
 
 

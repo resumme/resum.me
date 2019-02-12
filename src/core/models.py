@@ -36,11 +36,9 @@ class Course(models.Model):
 
 
 class Bio(models.Model):
-    """
-    More info about the user profile
-    """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    full_name = models.CharField(max_length=256, blank=True)
+    first_name = models.CharField(max_length=256, blank=True)
+    last_name = models.CharField(max_length=256, blank=True)
     mail = models.CharField(max_length=128, blank=True)
     bio = models.TextField(max_length=2048, blank=True)
     description = models.CharField(max_length=256, blank=True)
@@ -48,6 +46,10 @@ class Bio(models.Model):
     birth_date = models.DateField(null=True, blank=True, default=datetime.date.today)
 
     avatar = models.ImageField(upload_to='avatars/', blank=True)
+
+    @property
+    def full_name(self):
+        return ' '.join([self.first_name, self.last_name])
 
 
 class ProviderProfile(models.Model):

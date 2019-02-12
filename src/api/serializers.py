@@ -4,22 +4,35 @@ from rest_framework import serializers
 from rest_framework import serializers
 
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('url', 'username', 'email', 'groups')
+        fields = ('username', 'email')
 
 
 class BioSerializer(serializers.ModelSerializer):
+
+    user = UserSerializer()
+
     class Meta:
         model = Bio
-        exclude = ('user',)
+        fields = ('user', 'first_name', 'last_name', 'mail', 'description', 'resume', 'birth_date', 'avatar')
+
+
+class BioRestrictedSerializer(BioSerializer):
+    class Meta:
+        model = Bio
+        fields = ('bio',)
 
 
 class CourseSerializer(serializers.ModelSerializer):
+    tags = serializers.StringRelatedField(many=True)
+    provider = serializers.StringRelatedField()
+
+
     class Meta:
         model = Course
-        fields = ('title', 'url')
+        fields = ('title', 'url', 'badge', 'provider', 'tags',)
 
 
 class ProviderProfileSerializer(serializers.ModelSerializer):
@@ -30,9 +43,7 @@ class ProviderProfileSerializer(serializers.ModelSerializer):
 
 class CousesStatusSerializer(serializers.ModelSerializer):
     course = CourseSerializer()
-    profile = ProviderProfileSerializer()
 
     class Meta:
         model = CourseStatus
-        # fields = ('course',)
-        exclude = ('id',)
+        fields = ('course', 'status')

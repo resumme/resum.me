@@ -5,7 +5,7 @@ from rest_framework import viewsets
 from rest_framework.generics import RetrieveUpdateAPIView, ListAPIView
 from core.models import Bio, CourseStatus
 
-from .serializers import UserSerializer, BioSerializer, CousesStatusSerializer
+from .serializers import UserSerializer, BioSerializer, CousesStatusSerializer, BioRestrictedSerializer
 
 
 class UsersViewSet(viewsets.ModelViewSet):
@@ -36,9 +36,21 @@ class UserCoursesView(ListAPIView):
     queryset = CourseStatus.objects.all()
     serializer_class = CousesStatusSerializer
 
-def get_queryset(self):
-    return self.queryset.filter(profile__user=self.request.user)
+    def get_queryset(self):
+        return self.queryset.filter(profile__user=self.request.user)
 
+class UserCoursesPublicView(ListAPIView):
+    """
+    User must be logged to manage his data.
+
+    This endpoint allows you to view your courses.
+    """
+    queryset = CourseStatus.objects.all()
+    serializer_class = CousesStatusSerializer
+
+    def get_queryset(self, *args, **kwargs):
+        username = self.kwargs['username']
+        return self.queryset.filter(profile__user__username=username)
 
 class UserDataListUpdateView(RetrieveUpdateAPIView):
     """
@@ -48,6 +60,10 @@ class UserDataListUpdateView(RetrieveUpdateAPIView):
     """
     queryset = Bio.objects.all()
     serializer_class = BioSerializer
+
+    def put(self, request, *args, **kwargs):
+        self.serializer_class = BioRestrictedSerializer
+        return self.update(request, *args, **kwargs)
 
     def get_queryset(self):
         return self.queryset.filter(user=self.request.user)

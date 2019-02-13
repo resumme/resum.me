@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 
 from rest_framework import viewsets
@@ -6,6 +6,8 @@ from rest_framework.generics import RetrieveUpdateAPIView, ListAPIView
 from core.models import UserProfile, CourseStatus
 
 from .serializers import UserSerializer, BioSerializer, CousesStatusSerializer, BioRestrictedSerializer
+
+from .mixins import PublicApiViewPermissionsMixin
 
 
 class UsersViewSet(viewsets.ModelViewSet):
@@ -39,9 +41,11 @@ class UserCoursesView(ListAPIView):
     def get_queryset(self):
         return self.queryset.filter(profile__user=self.request.user)
 
-class UserCoursesPublicView(ListAPIView):
+class UserCoursesPublicView(PublicApiViewPermissionsMixin, ListAPIView):
+
+
     """
-    User must be logged to manage his data.
+    This endpoint is public. Login is not required to use this path.
 
     This endpoint allows you to view your courses.
     """

@@ -16,7 +16,7 @@ class BioSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserProfile
-        fields = ('user', 'first_name', 'last_name', 'mail', 'description', 'resume', 'birth_date', 'avatar')
+        fields = ('user', 'first_name', 'last_name', 'mail', 'resume', 'birth_date', 'avatar')
 
 
 class BioRestrictedSerializer(BioSerializer):

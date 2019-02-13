@@ -3,8 +3,8 @@ from core.models import ProviderProfile, Course, Provider, CourseStatus, UserPro
 
 
 class CourseStatusAdmin(admin.ModelAdmin):
-    list_display = ('profile', 'course', 'status')
-    list_filter = ('status', 'course')
+    list_display = ('profile', 'course', 'completed')
+    list_filter = ('completed', 'course')
 
 
 class CourseAdmin(admin.ModelAdmin):

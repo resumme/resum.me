@@ -81,13 +81,9 @@ class CourseStatus(models.Model):
     """
     Each course of each profile has an status
     """
-    STATUS_CHOICES = (
-        ('c', 'completed'),
-        ('i', 'in_progress'),
-    )
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     profile = models.ForeignKey(ProviderProfile, on_delete=models.CASCADE)
-    status = models.CharField(max_length=1, choices=STATUS_CHOICES)
+    completed = models.BooleanField(default=False)
 
 
 class TimelineItem(models.Model):

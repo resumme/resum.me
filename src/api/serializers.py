@@ -1,7 +1,6 @@
 from django.contrib.auth.models import User
 from core.models import UserProfile, CourseStatus, Course, ProviderProfile
 from rest_framework import serializers
-from rest_framework import serializers
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -46,4 +45,4 @@ class CousesStatusSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CourseStatus
-        fields = ('course', 'status')
+        fields = ('course', 'completed')

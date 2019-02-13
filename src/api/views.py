@@ -41,13 +41,21 @@ class UserCoursesView(ListAPIView):
     def get_queryset(self):
         return self.queryset.filter(profile__user=self.request.user)
 
+
+class UserCoursesAllView(UserCoursesView):
+    """
+    User must be logged to manage his data.
+
+    This endpoint allows you to get all the courses in a batch from a logged user.
+    """
+    pagination_class = None
+
+
 class UserCoursesPublicView(PublicApiViewPermissionsMixin, ListAPIView):
-
-
     """
     This endpoint is public. Login is not required to use this path.
 
-    This endpoint allows you to view your courses.
+    This endpoint allows you to view your courses. Response is paginated
     """
     queryset = CourseStatus.objects.all()
     serializer_class = CousesStatusSerializer
@@ -55,6 +63,17 @@ class UserCoursesPublicView(PublicApiViewPermissionsMixin, ListAPIView):
     def get_queryset(self, *args, **kwargs):
         username = self.kwargs['username']
         return self.queryset.filter(profile__user__username=username)
+
+
+class UserCoursesAllPublicView(UserCoursesPublicView):
+    """
+    This endpoint is public. Login is not required to use this path.
+
+    This endpoint allows you to get all courses in a batch
+    """
+    pagination_class = None
+
+
 
 class UserDataListUpdateView(RetrieveUpdateAPIView):
     """

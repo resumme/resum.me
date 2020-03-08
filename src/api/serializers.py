@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from core.models import UserProfile, CourseStatus, Course, ProviderProfile
+from core.models import UserProfile, CourseStatus, Course, ProviderProfile, TimelineItem
 from rest_framework import serializers
 
 
@@ -19,9 +19,12 @@ class BioSerializer(serializers.ModelSerializer):
 
 
 class BioRestrictedSerializer(BioSerializer):
+    """
+    This is used to avoid the update of some fields in this model
+    """
     class Meta:
         model = UserProfile
-        fields = ('bio',)
+        fields = ('first_name', 'last_name', 'mail', 'resume', 'birth_date', 'avatar')
 
 
 class CourseSerializer(serializers.ModelSerializer):
@@ -37,7 +40,13 @@ class CourseSerializer(serializers.ModelSerializer):
 class ProviderProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProviderProfile
-        exclude = ()
+        fields = ('error', 'username_provider')
+
+
+class TimelineItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TimelineItem
+        fields = ('title', 'description', 'type', 'start_date', 'end_date')
 
 
 class CousesStatusSerializer(serializers.ModelSerializer):

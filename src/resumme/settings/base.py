@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'taggit',
     'django_extensions',
     'rest_framework',
+    'drf_yasg',
     'webpack_loader',
 ]
 

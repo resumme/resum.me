@@ -1,9 +1,5 @@
-from django.db import models
 from django.contrib.auth.models import User
-from django.db.models import signals
 import datetime
-from django.dispatch import receiver
-import requests
 from django.db import models
 from taggit.managers import TaggableManager
 

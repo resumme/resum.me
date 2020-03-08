@@ -1,57 +1,16 @@
-from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 
-from rest_framework import viewsets
 from rest_framework.generics import RetrieveUpdateAPIView, ListAPIView
-from core.models import UserProfile, CourseStatus
+from core.models import UserProfile, CourseStatus, ProviderProfile, TimelineItem
 
-from .serializers import UserSerializer, BioSerializer, CousesStatusSerializer, BioRestrictedSerializer
+from .serializers import (BioSerializer, CousesStatusSerializer,
+                          BioRestrictedSerializer, ProviderProfileSerializer,
+                          TimelineItemSerializer)
 
-from .mixins import PublicApiViewPermissionsMixin
-
-
-class UsersViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
-    queryset = User.objects.all().order_by('-date_joined')
-    serializer_class = UserSerializer
+from .mixins import PublicApiViewPermissionsMixin, NoPaginateMixin
 
 
-class UserViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows bios to be viewed or edited.
-    """
-    queryset = UserProfile.objects.all()
-    serializer_class = BioSerializer
-
-    def get_queryset(self):
-        return self.queryset.filter(user=self.request.user)
-
-
-class UserCoursesView(ListAPIView):
-    """
-    User must be logged to manage his data.
-
-    This endpoint allows you to view your courses.
-    """
-    queryset = CourseStatus.objects.all()
-    serializer_class = CousesStatusSerializer
-
-    def get_queryset(self):
-        return self.queryset.filter(profile__user=self.request.user)
-
-
-class UserCoursesAllView(UserCoursesView):
-    """
-    User must be logged to manage his data.
-
-    This endpoint allows you to get all the courses in a batch from a logged user.
-    """
-    pagination_class = None
-
-
-class UserCoursesPublicView(PublicApiViewPermissionsMixin, ListAPIView):
+class UserCoursesListApi(PublicApiViewPermissionsMixin, ListAPIView):
     """
     This endpoint is public. Login is not required to use this path.
 
@@ -60,19 +19,37 @@ class UserCoursesPublicView(PublicApiViewPermissionsMixin, ListAPIView):
     queryset = CourseStatus.objects.all()
     serializer_class = CousesStatusSerializer
 
-    def get_queryset(self, *args, **kwargs):
-        username = self.kwargs['username']
-        return self.queryset.filter(profile__user__username=username)
+    def get_queryset(self):
+        return self.queryset.filter(profile__user__username=self.kwargs['username'])
 
 
-class UserCoursesAllPublicView(UserCoursesPublicView):
+class UserCoursesAllListApi(UserCoursesListApi, NoPaginateMixin):
     """
     This endpoint is public. Login is not required to use this path.
 
     This endpoint allows you to get all courses in a batch
     """
-    pagination_class = None
 
+
+class TimelineListApi(PublicApiViewPermissionsMixin, ListAPIView):
+    """
+    This endpoint is public. Login is not required to use this path.
+
+    This endpoint allows you to view your courses. Response is paginated
+    """
+    queryset = TimelineItem.objects.all()
+    serializer_class = TimelineItemSerializer
+
+    def get_queryset(self):
+        return self.queryset.filter(user__username=self.kwargs['username'])
+
+
+class TimelineAllListApi(TimelineListApi, NoPaginateMixin):
+    """
+    This endpoint is public. Login is not required to use this path.
+
+    This endpoint allows you to get all courses in a batch
+    """
 
 
 class UserDataListUpdateView(RetrieveUpdateAPIView):
@@ -88,6 +65,10 @@ class UserDataListUpdateView(RetrieveUpdateAPIView):
         self.serializer_class = BioRestrictedSerializer
         return self.update(request, *args, **kwargs)
 
+    def patch(self, request, *args, **kwargs):
+        self.serializer_class = BioRestrictedSerializer
+        return self.partial_update(request, *args, **kwargs)
+
     def get_queryset(self):
         return self.queryset.filter(user=self.request.user)
 
@@ -95,3 +76,36 @@ class UserDataListUpdateView(RetrieveUpdateAPIView):
         queryset = self.get_queryset()
         obj = get_object_or_404(queryset, user=self.request.user)
         return obj
+
+
+class UserProviderProfileRetrieveUpdateAPIView(RetrieveUpdateAPIView):
+    """
+    User must be logged to manage his data.
+
+    This endpoint allows you to view and modify one of
+    your provider profile data.
+    """
+    queryset = ProviderProfile.objects.all()
+    serializer_class = ProviderProfileSerializer
+
+    def get_queryset(self):
+        provider = self.kwargs['provider']
+        return self.queryset.filter(user=self.request.user, provider__name=provider)
+
+    def get_object(self):
+        queryset = self.get_queryset()
+        obj = get_object_or_404(queryset, user=self.request.user)
+        return obj
+
+
+class UserProviderProfileListView(ListAPIView):
+    """
+    User must be logged to manage his data.
+
+    This endpoint allows you to view all your provider profiles.
+    """
+    queryset = ProviderProfile.objects.all()
+    serializer_class = ProviderProfileSerializer
+
+    def get_queryset(self):
+        return self.queryset.filter(user=self.request.user)

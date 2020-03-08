@@ -55,7 +55,6 @@ def serialize_profile(user_profile):
     """
     return {
         'bio': user_profile.bio,
-        'description': user_profile.description,
         'resume': user_profile.resume,
         'full_name': user_profile.full_name,
         'mail': user_profile.mail,

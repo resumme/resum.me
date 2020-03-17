@@ -3,8 +3,8 @@ Pygments==2.2.0
 raven==6.9.0
 requests==2.18.4
 gunicorn==19.9.0
-psycopg2==2.7.0
-Pillow==5.1.0
+psycopg2-binary
+Pillow==6.2.2
 django-taggit==0.23.0
 django-extensions==2.1.0
 raven==6.9.0
@@ -17,3 +17,6 @@ google==2.0.1
 google-cloud-storage==1.11.0
 django-webpack-loader==0.6.0
 pytz==2018.7
+djangorestframework==3.11
+drf_yasg
+whitenoise

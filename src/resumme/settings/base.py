@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     'profiles',
     'templates',
     'landing',
-    'dashboard',
+    # 'dashboard',
     'api',
     'taggit',
     'django_extensions',
@@ -108,22 +108,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = 'https://storage.googleapis.com/bluekiri-kiri-pro-resumme-static/static/'
 
-STATIC_ROOT = 'static/'
+STATIC_URL = '/static/'
 
+# Add these new lines
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'dist'),
+    os.path.join(BASE_DIR, 'static'),
 )
 
-WEBPACK_LOADER = {
-    'DEFAULT': {
-        'CACHE': not DEBUG,
-        'BUNDLE_DIR_NAME': '/bundles/',  # must end with slash
-        'STATS_FILE': os.path.join(VUE_APP_DIR, 'webpack-stats.json'),
-    }
-}
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Auth settings
 LOGIN_REDIRECT_URL = '/r/dashboard'

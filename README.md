@@ -1,6 +1,8 @@
 [![Build Status](https://travis-ci.com/resumme/resum.me.svg?branch=master)](https://travis-ci.com/resumme/resum.me)
 [![Coverage Status](https://coveralls.io/repos/github/resumme/resum.me/badge.svg?branch=master)](https://coveralls.io/github/resumme/resum.me?branch=master)
 
+### This project is in stand by. Production servers are stopped in order to keep the project in a budget.
+
 <img src="https://storage.googleapis.com/bluekiri-kiri-pro-resumme-static/static/images/logos/logo-p.png" alt="Resumme Logo"  width="300" />
 
 > Build free resumes connecting with your favourite online schools. This plataforms will create a cool resume for you. The cool feature of this platform is the integration with your favourite course providers. While you are working hard finishing your latest courses, we will make sure to update your resume automatically.

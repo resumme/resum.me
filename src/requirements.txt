@@ -17,6 +17,6 @@ google==2.0.1
 google-cloud-storage==1.11.0
 django-webpack-loader==0.6.0
 pytz==2018.7
-djangorestframework==3.11
+djangorestframework==3.11.2
 drf_yasg
 whitenoise

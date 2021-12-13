@@ -8,7 +8,7 @@ Pillow==6.2.2
 django-taggit==0.23.0
 django-extensions==2.1.0
 raven==6.9.0
-lxml==4.2.3
+lxml==4.6.5
 html5lib==1.0.1
 beautifulsoup4==4.6.3
 gevent==1.4.0
